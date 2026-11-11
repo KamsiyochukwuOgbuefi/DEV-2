@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="page-hero">
+  <div class="container reveal">
+    <div class="eyebrow">Get in touch</div>
+    <h1>Let's build something <em>remarkable.</em></h1>
+    <p>Share your questions, comments or project brief — our team will respond within one business day.</p>
+  </div>
+  <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>Contact</span></div></div>
+</section>
+
+<section class="t-section">
+  <div class="container">
+    <div class="t-contact-grid reveal">
+      <div class="t-form-card">
+        <h2>Start the conversation</h2>
+        <p>Partner with Tareon Services Limited to transform your operations and achieve your business goals.</p>
+        {% include 'includes/alerts.html' %}
+        <form method="post" action="{% url 'contact_us' %}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6 t-field"><label for="{{ form.full_name.id_for_label }}">Full name</label>{{ form.full_name }}</div>
+            <div class="col-md-6 t-field"><label for="{{ form.email.id_for_label }}">Email</label>{{ form.email }}</div>
+            <div class="col-md-6 t-field"><label for="{{ form.phone_number.id_for_label }}">Phone</label>{{ form.phone_number }}</div>
+            <div class="col-md-6 t-field"><label for="{{ form.company_name.id_for_label }}">Company</label>{{ form.company_name }}</div>
+            <div class="col-md-6 t-field"><label for="{{ form.job_title.id_for_label }}">Job title</label>{{ form.job_title }}</div>
+            <div class="col-md-6 t-field"><label for="{{ form.service.id_for_label }}">Service of interest</label>{{ form.service }}</div>
+            <div class="col-md-6 t-field"><label for="{{ form.channel.id_for_label }}">Preferred contact</label>{{ form.channel }}</div>
+            <div class="col-md-12 t-field"><label for="{{ form.message.id_for_label }}">Message</label>{{ form.message }}<small style="color:#8aa3b1">Please share 80–300 characters about your need.</small></div>
+          </div>
+          <button type="submit" class="t-btn t-btn-dark" style="width:100%;justify-content:center">Send message <i class="fa fa-paper-plane"></i></button>
+        </form>
+      </div>
+      <div class="t-info-card">
+        <h3>Contact information</h3>
+        <div class="t-info-item"><i class="fa fa-location-dot"></i><div><b>Address</b><p>{{ company_links.address_line_1 }}{% if company_links.address_line_2 %}, {{ company_links.address_line_2 }}{% endif %}<br>{{ company_links.city }}, {{ company_links.state }}<br>{{ company_links.country }} · {{ company_links.postal_code }}</p></div></div>
+        <div class="t-info-item"><i class="fa fa-phone"></i><div><b>Telephone</b><p>{{ company_links.formatted_phone_number }}</p></div></div>
+        <div class="t-info-item"><i class="fa fa-envelope"></i><div><b>Email</b><p><a href="mailto:{{ company_links.email }}" style="color:#fff">{{ company_links.email }}</a></p></div></div>
+        <div class="t-info-item"><i class="fa fa-globe"></i><div><b>Website</b><p><a href="{{ company_links.website_address }}" style="color:#fff">{{ company_links.website_address }}</a></p></div></div>
+        <div class="t-info-item" style="border:0"><i class="fa fa-clock"></i><div><b>Response time</b><p>Within one business day.<br>Excellence — every time.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

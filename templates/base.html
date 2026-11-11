@@ -1,0 +1,82 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block meta_description %}Tareon Services Limited delivers technology, engineering, procurement and connected security solutions — secure, efficient operations for critical industries.{% endblock %}">
+  <meta name="keywords" content="technology solutions, engineering services, procurement, security solutions, IT services, Tareon, Nigeria, Lagos">
+  <meta name="author" content="Tareon Services Limited">
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="NG-LA"><meta name="geo.placename" content="Lagos, Maryland, Nigeria">
+  <meta name="rating" content="general">
+  <meta name="revisit-after" content="1 days">
+  <meta name="language" content="EN">
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
+  <!-- Open Graph (Facebook / LinkedIn / chatbots) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tareon Services Limited">
+  <meta property="og:title" content="{% block og_title %}Tareon Services Limited | Technology, Engineering & Procurement{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Trusted security. Proven protection. Technology, engineering and procurement solutions for critical operations.{% endblock %}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:image" content="{% static 'images/home/b.jpg' %}">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_NG">
+  <!-- Twitter / X card (chatbots & social) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TareonServices">
+  <meta name="twitter:title" content="{% block twitter_title %}Tareon Services Limited{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}Technology, engineering and procurement excellence — trusted security, proven protection.{% endblock %}">
+  <meta name="twitter:image" content="{% static 'images/home/b.jpg' %}">
+  <!-- Bing / search engines -->
+  <meta name="msvalidate.01" content="tareon-google-bing-verification">
+  <meta name="google-site-verification" content="tareon-google-verification">
+  <meta name="bingbot" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-image-preview:large">
+  <!-- AI / chatbot discoverability -->
+  <meta name="ai:description" content="Tareon Services Limited — Technology, Engineering and Procurement solutions provider, Lagos Nigeria. Digital transformation, security operations, engineering delivery, supply chain.">
+  <meta name="citation_title" content="Tareon Services Limited">
+  <meta name="citation_author" content="Tareon Services Limited">
+  <meta name="citation_publication_date" content="2026/11/05">
+  <meta property="business:contact_data:locality" content="Maryland, Lagos, Nigeria">
+  <meta property="business:contact_data:email" content="info@tareonservices.com">
+  <meta property="business:contact_data:phone_number" content="+234 813-827-1724">
+  <title>{% block title %}Tareon Services Limited{% if title %} | {{ title }}{% endif %}{% endblock %}</title>
+  <!-- Structured data for all search engines & AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Tareon Services Limited",
+    "url": "https://www.tareonservices.com",
+    "logo": "https://www.tareonservices.com/media/photos/logos/Tareon_Official_Logo.png",
+    "image": "https://www.tareonservices.com/static/images/home/b.jpg",
+    "description": "Technology, engineering and procurement solutions that help organisations operate with confidence.",
+    "email": "info@tareonservices.com",
+    "telephone": "+234 813-827-1724",
+    "address": { "@type": "PostalAddress", "streetAddress": "No. 14, Bayo Dejowon Street", "addressLocality": "Maryland", "addressRegion": "Lagos", "postalCode": "100211", "addressCountry": "NG" },
+    "sameAs": ["https://www.linkedin.com/company/tareon-services-limited"],
+    "knowsAbout": ["Technology & IT Services", "Engineering Services", "Procurement & Supply Chain", "Security Operations", "Digital Transformation"],
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technology & IT Services" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Engineering Services" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Procurement & Supply Chain Services" } }
+    ]
+  }
+  </script>
+  {% block extra_meta %}{% endblock %}
+  <link rel="icon" href="{% static 'images/logo/favicon.ico' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'js/bootstrap/bootstrap.min.css' %}"><link rel="stylesheet" href="{% static 'js/mainmenu/menu.css' %}">
+  <link rel="stylesheet" href="{% static 'css/default.css' %}"><link rel="stylesheet" href="{% static 'css/layouts.css' %}"><link rel="stylesheet" href="{% static 'css/shortcodes.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animation.css' %}"><link rel="stylesheet" href="{% static 'css/responsive-leyouts.css' %}"><link rel="stylesheet" href="{% static 'js/masterslider/style/masterslider.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}"><link rel="stylesheet" href="{% static 'css/tareon-modern.css' %}?v=20261105l">
+</head>
+<body>
+  <div class="site_wrapper">{% include 'includes/navbar.html' %}{% block content %}{% endblock %}{% include 'includes/footer.html' %}<a class="wa-float" href="https://wa.me/2348138271724?text=Hello%20Tareon%20Services%20Limited%2C%20I%27d%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener" aria-label="Chat with Tareon on WhatsApp"><i class="fab fa-whatsapp"></i><span class="wa-label">Chat on WhatsApp</span></a><a href="#" class="scrollup" aria-label="Back to top"><i class="fa fa-arrow-up"></i></a></div>
+  <script src="{% static 'js/universal/jquery.js' %}"></script><script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script><script src="{% static 'js/mainmenu/customeUI.js' %}"></script><script src="{% static 'js/mainmenu/jquery.sticky.js' %}"></script><script src="{% static 'js/masterslider/masterslider.min.js' %}"></script>
+  <script>if (document.getElementById('masterslider')) { var slider = new MasterSlider(); slider.control('arrows'); slider.control('bullets'); slider.setup('masterslider', {width:1600,height:650,space:0,speed:45,layout:'fullwidth',loop:true,preload:0,autoplay:true,view:'parallaxMask'}); }</script>
+  <script src="{% static 'js/owl-carousel/owl.carousel.js' %}"></script><script src="{% static 'js/owl-carousel/custom.js' %}"></script><script src="{% static 'js/scrolltotop/totop.js' %}"></script><script src="{% static 'js/scripts/functions.js' %}"></script><script src="{% static 'js/tareon-modern.js' %}?v=20261105l"></script>
+</body>
+</html>

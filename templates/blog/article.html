@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ article.article_title }} | Tareon Journal{% endblock %}
+{% block meta_description %}{{ article.article_subtitle }}{% endblock %}
+{% block og_title %}{{ article.article_title }} | Tareon Journal{% endblock %}
+{% block og_description %}{{ article.article_subtitle }}{% endblock %}
+{% block extra_meta %}
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"Article","headline":"{{ article.article_title }}","description":"{{ article.article_subtitle }}","author":{"@type":"Organization","name":"Tareon Services Limited"},"publisher":{"@type":"Organization","name":"Tareon Services Limited"},"datePublished":"{{ article.created_date|date:"c" }}","url":"{{ request.build_absolute_uri }}" }
+</script>
+{% endblock %}
+{% load myapp_tags %}
+{% block content %}
+<section class="page-hero">
+  <div class="container reveal">
+    <div class="eyebrow">Article · {{ article.created_date|date:"M d, Y" }}</div>
+    <h1>{{ article.article_title }}</h1>
+    <p>{{ article.article_subtitle }}</p>
+    <div class="breadcrumb" style="border:0;padding:10px 0 0"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><a href="{% url 'blog' %}">Journal</a><i class="fa fa-chevron-right"></i><span>{{ article.article_title|truncatewords:4 }}</span></div>
+  </div>
+</section>
+
+<section class="t-section">
+  <div class="container">
+    <div class="row reveal">
+      <div class="col-md-8">
+        {% if article.image %}<img class="img-responsive" alt="" src="{{ article.image.url }}" style="width:100%;height:420px;object-fit:cover;border-radius:14px;margin-bottom:30px">{% endif %}
+        <div class="blog-post-info capitalize" style="color:#8aa3b1;font-size:13px;margin-bottom:26px"><span><i class="fa fa-user"></i> By {% for author in article.article_author.all %}{% if not forloop.first %}, {% endif %}{{ author.full_name }}{% endfor %}</span></div>
+        {% for paragraph in paragraphs %}
+          {% if forloop.counter|divisibleby:4 %}{% include 'includes/footer_cta.html' %}{% endif %}
+          <h3 style="font-size:26px;margin:30px 0 12px">{{ paragraph.paragraph_title }}</h3>
+          {% with paragraph.paragraph_content|split:'/n/n' as phrases %}{% for phrase in phrases %}<p style="color:#405a70;font-size:16px;line-height:1.85;margin-bottom:16px">{{ phrase }}</p>{% endfor %}{% endwith %}
+        {% endfor %}
+        <h4 style="margin-top:40px">Share this article</h4>
+        <ul class="social-icons-2"><li><a href="https://twitter.com/intent/tweet?text={{ article.article_title|urlencode }}"><i class="fab fa-x-twitter"></i></a></li><li><a href="https://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}"><i class="fab fa-facebook-f"></i></a></li><li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}"><i class="fab fa-linkedin-in"></i></a></li></ul>
+        <h4 style="margin-top:40px">Latest posts</h4>
+        <div class="t-process-grid" style="grid-template-columns:repeat(3,1fr)">
+          {% for latest in articles %}
+          <div class="t-process-card" style="padding:20px">{% if latest.image %}<img src="{{ latest.image.url }}" alt="" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:14px">{% endif %}<h3 style="font-size:17px"><a href="{{ latest.get_url }}" style="color:inherit">{{ latest.article_title }}</a></h3><p>{{ latest.created_date|date:"M d, Y" }}</p></div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="t-faq-side" style="margin-bottom:24px">
+          <h4>Search</h4>
+          <form action="{% url 'search' %}" method="GET" style="display:flex;gap:8px">
+            <input class="blog1-sidebar-serch_input" type="search" name="keyword" placeholder="Keyword" style="flex:1;border:1px solid var(--line);border-radius:8px;padding:11px 13px">
+            <input value="Go" class="t-btn t-btn-dark" type="submit" style="padding:11px 18px">
+          </form>
+        </div>
+        <div class="t-faq-side" style="margin-bottom:24px">
+          <h4>Latest posts</h4>
+          {% for latest in articles %}
+          <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)">{% if latest.image %}<img src="{{ latest.image.url }}" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:8px">{% endif %}<div><a href="{{ latest.get_url }}" style="color:var(--ink);font-weight:700;font-size:14px">{{ latest.article_title }}</a><p style="color:#8aa3b1;font-size:12px;margin:4px 0 0">{{ latest.created_date|date:"M d" }}</p></div></div>
+          {% endfor %}
+        </div>
+        <div class="t-faq-side">
+          <h4>Tags</h4>
+          {% with article.tags|split:', ' as tags %}{% for tag in tags %}<a href="{% url 'blog_by_keyword' keyword=tag %}" style="display:inline-block;border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 13px;margin:0 6px 8px 0;font-size:12px;font-weight:700">{{ tag }}</a>{% endfor %}{% endwith %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="page-hero">
+  <div class="container reveal">
+    <div class="eyebrow">Portfolio</div>
+    <h1>{{ services.name }} — <em>projects.</em></h1>
+    <p>Real work. Real outcomes. Delivered by Tareon with precision and accountability.</p>
+  </div>
+  <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>{{ services.name }} projects</span></div></div>
+</section>
+
+<section class="t-section">
+  <div class="container">
+    <div class="t-flip-grid reveal">
+      {% for project in projects %}
+      <a class="flip-card" href="{{ project.get_url }}" style="display:block;color:inherit">
+        {% for key, val in display_images.items %}{% if key == project.id %}<img src="{{ val }}" alt="{{ project.title }}">{% endif %}{% endfor %}
+        <div class="flip-body"><h3>{{ project.title }}</h3><p>{{ project.project_scope|truncatewords:24 }}</p><span class="t-link" style="margin-top:12px">View case study <i class="fa fa-arrow-right"></i></span></div>
+      </a>
+      {% empty %}
+      <div class="flip-card"><div class="flip-body"><h3>Projects in progress</h3><p>Our latest {{ services.name }} work is being documented — talk to us for references tailored to your sector.</p></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include 'includes/footer_cta.html' %}
+{% endblock %}

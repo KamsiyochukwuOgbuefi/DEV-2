@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="tareon-home">
+  <section class="th-hero">
+    <div class="th-hero__image" role="img" aria-label="Tareon professionals delivering secure operations"></div>
+    <div class="th-hero__mesh"></div>
+    <div class="container th-hero__content">
+      <p class="th-kicker"><span></span> Technology · Engineering · Procurement</p>
+      <h1>Confidence for<br><em>critical operations.</em></h1>
+      <p class="th-hero__lead">Tareon brings people, technology and rigorous delivery together — so your organisation operates securely, efficiently and without compromise.</p>
+      <div class="th-actions"><a class="t-btn t-btn-gold" href="{% url 'contact_us' %}">Speak to our team <i class="fa fa-arrow-up-right-from-square"></i></a><a class="t-btn t-btn-ghost" href="#capabilities">Explore capabilities <i class="fa fa-arrow-down"></i></a></div>
+      <div class="th-hero__stats">
+        <div><b><span data-count="10">10</span><i>+</i></b><span>Years of delivery</span></div>
+        <div><b><span data-count="3">3</span></b><span>Core disciplines</span></div>
+        <div><b><span data-count="24">24</span><i>/7</i></b><span>Operational readiness</span></div>
+      </div>
+    </div>
+    <div class="th-hero__card"><span>Integrated delivery</span><strong>One partner.<br>Clear outcomes.</strong></div>
+    <div class="th-hero__ticker"><div class="th-hero__ticker-inner"><b>Trusted security</b> Proven protection <b>Digital transformation</b> Operational efficiency <b>Engineering precision</b> Procurement excellence <b>Trusted security</b> Proven protection <b>Digital transformation</b> Operational efficiency <b>Engineering precision</b> Procurement excellence</div></div>
+  </section>
+
+  <section class="th-intro">
+    <div class="container reveal"><div class="row"><div class="col-md-4"><p class="t-eyebrow">The Tareon Standard</p></div><div class="col-md-8"><h2 class="t-h-lg">Complex work deserves <em>clarity.</em></h2><p class="th-large-copy">We design and deliver the systems, protection and operational support that keep ambitious organisations moving forward — from the first assessment to measurable, enduring results.</p><a class="t-link" href="{% url 'company' %}">Meet Tareon <i class="fa fa-arrow-right"></i></a></div></div></div>
+  </section>
+
+  <section class="th-capabilities" id="capabilities">
+    <div class="container reveal"><div class="th-section-head"><div><p class="t-eyebrow">What we deliver</p><h2 class="t-h-lg">Expertise that<br>works <em>together.</em></h2></div><p>One connected team. Three focused disciplines. Built around the realities of your operation.</p></div>
+      <div class="th-capability-grid">
+        {% for service in services %}
+        <a class="th-capability" href="{{ service.service_url }}"><span class="th-capability__number">0{{ forloop.counter }}</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>{{ service.name }}</h3><p>{{ service.description|truncatewords:24 }}</p><span class="th-capability__line"></span></a>
+        {% empty %}
+        <a class="th-capability" href="{% url 'contact_us' %}"><span class="th-capability__number">01</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>Technology &amp; IT</h3><p>Intelligent systems that sharpen visibility, resilience and decision-making.</p><span class="th-capability__line"></span></a>
+        <a class="th-capability" href="{% url 'contact_us' %}"><span class="th-capability__number">02</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>Engineering</h3><p>Precision-led delivery for dependable assets and operations.</p><span class="th-capability__line"></span></a>
+        <a class="th-capability" href="{% url 'contact_us' %}"><span class="th-capability__number">03</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>Procurement</h3><p>Reliable sourcing and coordination built around your priorities.</p><span class="th-capability__line"></span></a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="th-features">
+    <div class="container reveal">
+      <p class="t-eyebrow" style="color:#73e5d5">Why Tareon</p>
+      <h2 class="t-h-lg">Built different. <em>Built to last.</em></h2>
+      <div class="th-feature-grid">
+        <div class="th-feature reveal"><i class="fa fa-shield-halved"></i><h3>Security by design</h3><p>Every solution is engineered with protection, resilience and risk awareness at its core — not bolted on later.</p></div>
+        <div class="th-feature reveal"><i class="fa fa-handshake-simple"></i><h3>Partnership, not vendor</h3><p>We work as an extension of your team: transparent, accountable and invested in your long-term outcomes.</p></div>
+        <div class="th-feature reveal"><i class="fa fa-bolt"></i><h3>Delivery that moves</h3><p>Structured processes, senior oversight and measurable milestones keep complex work on time and on brief.</p></div>
+        <div class="th-feature reveal"><i class="fa fa-microchip"></i><h3>Technology with purpose</h3><p>Digital transformation guided by operational reality — tools that serve people, not the other way round.</p></div>
+        <div class="th-feature reveal"><i class="fa fa-helmet-safety"></i><h3>Precision engineering</h3><p>Technical expertise validated in the field, where safety, efficiency and compliance cannot be compromised.</p></div>
+        <div class="th-feature reveal"><i class="fa fa-boxes-stacked"></i><h3>Procurement excellence</h3><p>Sourcing and supply coordination that protects value, quality and timelines — every time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="th-approach"><div class="container reveal"><div class="row"><div class="col-md-5"><p class="t-eyebrow">How we think</p><h2 class="t-h-lg">Protect the<br>possibility of <em>progress.</em></h2><p>Every engagement begins with your real operating environment — not a generic template. We combine strategic oversight with hands-on execution to make complex work feel controlled.</p><a class="t-btn t-btn-dark" href="{% url 'contact_us' %}">Start a conversation <i class="fa fa-arrow-right"></i></a></div><div class="col-md-6 col-md-offset-1"><ol class="th-steps"><li><span>01</span><div><h3>Understand the environment</h3><p>We identify what matters, what can change and where opportunity lives.</p></div></li><li><span>02</span><div><h3>Design the right response</h3><p>We match people, technology and process to the work in front of you.</p></div></li><li><span>03</span><div><h3>Deliver with accountability</h3><p>We stay close to implementation, performance and the outcome you need.</p></div></li></ol></div></div></div></section>
+
+  <section class="th-sectors"><div class="container reveal"><div class="th-section-head"><div><p class="t-eyebrow">Sector perspective</p><h2 class="t-h-lg">Deeply relevant.<br><em>Always practical.</em></h2></div><p>Sector experience lets us anticipate the pressures that shape your work and respond with confidence.</p></div><div class="th-sector-grid">{% for industry in industries %}<a href="{{ industry.industry_url }}"><span>0{{ forloop.counter }}</span><h3>{{ industry.name }}</h3><i class="fa fa-arrow-right"></i></a>{% empty %}<a href="{% url 'contact_us' %}"><span>01</span><h3>Technology &amp; IT</h3><i class="fa fa-arrow-right"></i></a><a href="{% url 'contact_us' %}"><span>02</span><h3>Engineering</h3><i class="fa fa-arrow-right"></i></a><a href="{% url 'contact_us' %}"><span>03</span><h3>Procurement &amp; Supply</h3><i class="fa fa-arrow-right"></i></a>{% endfor %}</div></div></section>
+
+  <section class="th-proof"><div class="container reveal"><div class="th-proof__quote">
+    {% if testimonials %}
+      {% for testimonial in testimonials %}
+      <div class="th-testimonial-slide"><span class="th-quote-mark">&ldquo;</span><blockquote>{{ testimonial.content }}</blockquote><p><strong>{{ testimonial.name }}</strong>{% if testimonial.location %} · {{ testimonial.location }}{% endif %}</p></div>
+      {% endfor %}
+      <div class="th-testimonial-nav"><button type="button" id="tPrev" aria-label="Previous testimonial"><i class="fa fa-arrow-left"></i></button><button type="button" id="tNext" aria-label="Next testimonial"><i class="fa fa-arrow-right"></i></button></div>
+    {% else %}
+      <span class="th-quote-mark">&ldquo;</span><blockquote>Intelligence, integrity and disciplined execution — working in concert.</blockquote><p><strong>Tareon Services Limited</strong> · Lagos, Nigeria</p>
+    {% endif %}
+  </div></div></section>
+
+  <section class="th-partners"><div class="container"><p>Trusted alongside</p><div class="th-partner-row">{% for partner in partners %}{% if partner.image %}<img src="{{ partner.image.url }}" alt="{{ partner.name }}">{% endif %}{% empty %}<span style="color:#8aa3b1;font-size:14px">Technology · Energy · Infrastructure · Government · Healthcare · Manufacturing</span>{% endfor %}</div></div></section>
+
+  <section class="th-resources"><div class="container reveal"><div class="row"><div class="col-md-7"><p class="t-eyebrow">Ideas for the field</p><h2 class="t-h-lg">See what a connected<br>operation can <em>become.</em></h2></div><div class="col-md-5 th-resources__copy"><p>Our selected reports and guides explore smarter frontline operations, assisted reality and technology-led resilience.</p><a class="t-link" href="{% url 'resources' %}">Enter the knowledge centre <i class="fa fa-arrow-right"></i></a></div></div></div></section>
+
+  {% include 'includes/footer_cta.html' %}
+</main>
+{% endblock %}

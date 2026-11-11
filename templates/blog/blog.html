@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="page-hero">
+  <div class="container reveal">
+    <div class="eyebrow">Journal</div>
+    <h1>Insights from the <em>field.</em></h1>
+    <p>Ideas, guides and perspectives from Tareon’s team — for leaders who operate where it matters.</p>
+  </div>
+  <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>Journal</span></div></div>
+</section>
+
+<section class="t-section">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:40px">
+      <form action="{% url 'search' %}" method="GET" class="t-search">
+        <input type="search" name="keyword" placeholder="Search articles…" aria-label="Search articles">
+        <button class="t-btn t-btn-dark" type="submit">Search <i class="fa fa-magnifying-glass"></i></button>
+      </form>
+      <style>.t-search{display:flex;gap:10px;max-width:640px}.t-search input{flex:1;border:1px solid var(--line);border-radius:8px;padding:13px 16px;font-size:14px}</style>
+    </div>
+
+    <div class="resource-grid reveal">
+      {% for article in articles %}
+      <article class="resource-card">
+        {% if article.image %}<img src="{{ article.image.url }}" alt="" style="width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:20px">{% endif %}
+        <div class="resource-type"><i class="fa fa-calendar"></i> {{ article.created_date|date:"M d, Y" }}</div>
+        <h3><a href="{{ article.get_url }}" style="color:inherit">{{ article.article_title }}</a></h3>
+        <p>{{ article.article_subtitle }}</p>
+        <div class="resource-actions"><a href="{{ article.get_url }}">Read article <i class="fa fa-arrow-right"></i></a></div>
+      </article>
+      {% empty %}
+      <p style="color:#5c7083">No articles published yet — check back soon.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include 'includes/footer_cta.html' %}
+{% endblock %}

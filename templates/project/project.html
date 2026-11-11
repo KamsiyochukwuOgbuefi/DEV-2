@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="page-hero">
+  <div class="container reveal">
+    <div class="eyebrow">Case study</div>
+    <h1>{{ project.title }}</h1>
+    <p>How Tareon delivered — with precision, accountability and measurable impact.</p>
+  </div>
+  <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>{{ project.title }}</span></div></div>
+</section>
+
+<section class="t-section">
+  <div class="container">
+    <div class="reveal" style="max-width:820px">
+      <p class="t-eyebrow">Project scope</p>
+      <h2 class="t-h-lg">{{ project.title }}</h2>
+      <p class="t-lead">{{ project.project_scope }}</p>
+      {% if project.completion_date %}<p style="color:#8aa3b1;margin-top:18px"><i class="fa fa-calendar"></i> Completed {{ project.completion_date|date:"F Y" }}</p>{% endif %}
+      {% if project.project_url %}<a class="t-link" href="{{ project.project_url }}" target="_blank" rel="noopener">Visit project <i class="fa fa-arrow-up-right-from-square"></i></a>{% endif %}
+    </div>
+    <div class="t-flip-grid reveal">
+      {% for image in project_images %}
+      <div class="flip-card"><img src="{{ image.image.url }}" alt="{{ image.name|default:project.title }}"><div class="flip-body"><h3>{{ image.name|default:project.title }}</h3><p>{{ image.description }}</p></div></div>
+      {% empty %}
+      <div class="flip-card"><div class="flip-body"><h3>Delivered with discipline</h3><p>Every Tareon project pairs senior oversight with hands-on execution — on time, on brief, and to standard.</p></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include 'includes/footer_cta.html' %}
+{% endblock %}

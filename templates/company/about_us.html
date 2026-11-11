@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="page-hero">
+  <div class="container reveal">
+    <div class="eyebrow">Who we are</div>
+    <h1>We are Tareon — <em>partners in progress.</em></h1>
+    <p>Empowering businesses through technology, engineering &amp; procurement excellence.</p>
+  </div>
+  <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>About Us</span></div></div>
+</section>
+
+<section class="t-section">
+  <div class="container">
+    <div class="t-about-grid reveal">
+      <div>
+        <p class="t-eyebrow">Business Overview</p>
+        <h2 class="t-h-lg">A trusted partner for <em>critical operations.</em></h2>
+        <p class="t-lead">{{ company_overview.business_overview|default:"Tareon Services Limited is a forward-thinking, multi-sector solutions company redefining excellence across Technology, Engineering, and Procurement." }}</p>
+        <p style="color:#536d81;font-size:16px;line-height:1.8;margin:20px 0 28px">{{ company_overview.goals|default:"We empower organisations to achieve digital transformation, operational efficiency and sustainable growth — transforming complex challenges into measurable opportunities." }}</p>
+        <a class="t-btn t-btn-dark" href="{% url 'contact_us' %}">Meet the team <i class="fa fa-arrow-right"></i></a>
+      </div>
+      <div class="t-about-img"><img src="{% static 'images/slides/about.jpg' %}" alt="Tareon team at work"><div class="t-badge-float"><b><span data-count="10">0</span><i>+</i></b><span>Years of trusted delivery</span></div></div>
+    </div>
+
+    <div class="t-value-grid reveal">
+      <div class="t-value-card"><div class="t-num">01</div><h3>Our Vision</h3><p>{{ company_overview.vision|default:"To be a trusted global solutions partner, delivering innovative technology, engineering and procurement services that empower businesses to operate efficiently, securely and sustainably." }}</p></div>
+      <div class="t-value-card"><div class="t-num">02</div><h3>Our Mission</h3><p>{{ company_overview.mission|default:"To provide reliable, cost-effective and cutting-edge solutions across IT, Engineering and Procurement — helping clients achieve digital transformation, operational efficiency and long-term success." }}</p></div>
+      <div class="t-value-card"><div class="t-num">03</div><h3>Our Values</h3><p>{{ company_overview.values|default:"Integrity, Excellence, Innovation, Accountability and Partnership — values that guide our work, inspire trust and drive lasting success for our clients." }}</p></div>
+    </div>
+
+    <div class="t-stats-band reveal" style="margin-top:60px">
+      <div><b><span data-count="10">10</span><i>+</i></b><span>Years of expertise</span></div>
+      <div><b><span data-count="3">3</span></b><span>Core disciplines</span></div>
+      <div><b><span data-count="24">24</span><i>/7</i></b><span>Operational readiness</span></div>
+      <div><b><span data-count="100">100</span><i>%</i></b><span>Commitment to outcomes</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="th-features">
+  <div class="container reveal">
+    <p class="t-eyebrow" style="color:#73e5d5">What we deliver</p>
+    <h2 class="t-h-lg">Three disciplines. <em>One standard:</em> excellence.</h2>
+    <div class="th-capability-grid" style="margin-top:44px">
+      {% for service in services %}
+      <a class="th-capability" href="{{ service.service_url }}" style="background:#fff"><span class="th-capability__number">0{{ forloop.counter }}</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>{{ service.name }}</h3><p>{{ service.description|truncatewords:24 }}</p><span class="th-capability__line"></span></a>
+      {% empty %}
+      <a class="th-capability" href="{% url 'contact_us' %}"><span class="th-capability__number">01</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>Technology &amp; IT Services</h3><p>Intelligent systems that sharpen visibility, resilience and decision-making.</p><span class="th-capability__line"></span></a>
+      <a class="th-capability" href="{% url 'contact_us' %}"><span class="th-capability__number">02</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>Engineering Services</h3><p>Precision-led delivery for dependable assets and operations.</p><span class="th-capability__line"></span></a>
+      <a class="th-capability" href="{% url 'contact_us' %}"><span class="th-capability__number">03</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>Procurement &amp; Supply Chain</h3><p>Reliable sourcing and coordination built around your priorities.</p><span class="th-capability__line"></span></a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if staffs %}
+<section class="t-section" style="padding-bottom:40px"><div class="container reveal"><p class="t-eyebrow center">Meet our people</p><h2 class="t-h-lg" style="text-align:center">Seasoned experts. <em>People first.</em></h2><div class="t-team-grid">{% for employee in staffs %}<div class="t-team-card">{% if employee.image %}<img src="{{ employee.image.url }}" alt="{{ employee.full_name }}">{% endif %}<div class="t-team-info"><h4>{{ employee.full_name }}</h4><p>{{ employee.position }}</p><span>{{ employee.description }}</span></div></div>{% endfor %}</div></div></section>
+{% endif %}
+
+<section class="th-proof"><div class="container reveal"><div class="th-proof__quote"><span class="th-quote-mark">&ldquo;</span>{% if testimonials %}{% for testimonial in testimonials|slice:':1' %}<blockquote>{{ testimonial.content }}</blockquote><p><strong>{{ testimonial.name }}</strong>{% if testimonial.location %} · {{ testimonial.location }}{% endif %}</p>{% endfor %}{% else %}<blockquote>Intelligence, integrity and disciplined execution — working in concert.</blockquote><p><strong>Tareon Services Limited</strong> · Lagos, Nigeria</p>{% endif %}</div></div></section>
+
+{% include 'includes/footer_cta.html' %}
+{% endblock %}

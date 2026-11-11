@@ -1,0 +1,150 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+
+{% url 'client_dashboard' as client_dashboard %}
+{% url 'faqcategory_dashboard' as c_dash %}
+{% url 'update_faqcategory' updated_faqcategory.id as u_category %}
+{% url 'faqquestion_dashboard' as q_dash %}
+{% url 'update_faqquestion' updated_faqquestion.id as u_question %}
+
+
+  <!-- <section>
+    <div class="header-inner two">
+      <div class="inner text-center">
+        <h4 class="title text-white uppercase">We Are Hasta</h4>
+        <h5 class="text-white uppercase">Get Many More Features</h5>
+      </div>
+      <div class="overlay bg-opacity-5"></div>
+      <img src="http://placehold.it/1920x800" alt="" class="img-responsive"/> </div>
+  </section> -->
+  <!-- end header inner -->
+  <div class="clearfix"></div>
+
+  <section>
+    <div class="pagenation-holder">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Admin Dashboard</h3>
+          </div>
+          <div class="col-md-6 text-right">
+            <div class="pagenation_links"><a href="index.html">Home</a><i> / </i> <a href="index.html">Portfolio</a> <i> / </i> Portfolio Two Column</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--end section-->
+  <div class="clearfix"></div>
+
+  <section class="sec-padding">
+    <div class="container">
+    <div class="row">
+    
+    {% include 'includes/admin_dash_navbar.html' %}
+    
+    <div class="col-md-9 col-sm-9 col-xs-12 bmargin">
+        <div class="text-box padding-3 border">
+            <div class=" bmargin">
+
+            <h3>Faq  Question</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commodo augue. Aliquam ornare hendrerit consectetuer adipiscing elit. Suspendisse et justo. augue.</p>
+            <br/>
+            {% include 'includes/alerts.html' %}
+            <br/>
+            {% if request.path == q_dash %}
+            <form method="POST" action="{% url 'faqquestion_dashboard' %}" enctype="multipart/form-data">
+            {% else %}
+            <form method="POST" action="{% url 'update_faqquestion' updated_faqquestion.id as u_question %}" enctype="multipart/form-data">
+            {% endif %}
+
+              {% csrf_token %}
+              <div class="form-group col col-md-12">
+                <label for="category">Category</label>
+                {{ form.category }}
+              </div>
+              <div class="form-group col col-md-12">
+                <label for="question">Enter Question</label>
+                {{ form.question }}
+              </div>
+              <div class="form-group col col-md-12">
+                <label for="answer">Enter Answer</label>
+                {{ form.answer }}
+              </div>
+              <div class="form-group">
+                {% if request.path == q_dash %}
+                <button type="submit" class="btn btn-primary">submit</button>
+                {% else %}
+                <button type="submit" class="btn btn-primary">Update</button>
+                {% endif %}
+              </div>
+            </form>
+          </div>
+          <!-- end .smart-forms section -->
+      </div>
+      <div class="text-box padding-3"></div>
+
+    {% if faqquestions.all %}
+    <div class="text-box padding-3 border">
+      <div class=" bmargin">
+        <div class="cd__main table-wrapper">
+            <!-- Your table -->
+            <table
+              class="table table-striped"
+              id="example"
+              style="width:100%"
+            >
+              <thead>
+                <tr>
+                <th data-label="Faq Question">Faq Question</th>
+                <th data-label="Faq Category">Faq Category</th>
+                <th data-label="Edit">Edit</th>
+                <th data-label="Delete">Delete</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for question in faqquestions %}
+                  <tr>
+                    <td>{{ question.question }}</td>
+                      <td>{{ question.category }}</td>
+                      <td>
+                        <a title="Edit" href="{{ question.update_url }}" class="btn btn-warning btn-small btn-round" style=>
+                          <span title="Edit">
+                            <i class="fa fa-pencil fa-sm" aria-hidden="true"></i>
+                          </span>
+                        </a>
+                      </td>
+                      <td>
+                        <a title="Delete" href="{{ question.delete_url }}" class="btn btn-danger btn-small btn-round">
+                          <span>
+                            <i class="fa fa-trash fa-sm" aria-hidden="true"></i>
+                          </span>
+                        </a>
+                      </td>
+                  </tr>
+                {% endfor %}
+
+              </tbody>
+              <tfoot>
+                  <tr>
+                    <th>Faq Question</th>
+                      <th>Category</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                  </tr>
+              </tfoot>
+          </table>
+        </div>
+        </div>
+    </div>
+    {% endif %}
+
+      </div>
+
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}

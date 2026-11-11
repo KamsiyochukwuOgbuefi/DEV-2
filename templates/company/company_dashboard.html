@@ -1,0 +1,111 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+
+{% url 'client_dashboard' as client_dashboard %}
+{% url 'company_dashboard' as c_dashboard %}
+{% url 'business_overview' as BO %}
+
+  <div class="clearfix"></div>
+
+  <section>
+    <div class="pagenation-holder" style="background-color: #ffffff;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Admin Dashboard</h3>
+          </div>
+          <div class="col-md-6 text-right">
+            <div class="pagenation_links"><a href="{% url 'home' %}">Home</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--end section-->
+  <div class="clearfix"></div>
+
+
+<section class="sec-padding" style="background-color: #ffffff;">
+  <div class="container">
+    <div class="row">
+
+    {% include 'includes/admin_dash_navbar.html' %}
+
+    <div class="col-md-9 col-sm-9 col-xs-12 bmargin">
+      <div class="text-box padding-3 border">
+      <div class=" bmargin">
+
+          <h3>Company Details</h3>
+          <p>Update your company's information here. Fill in the form with accurate details such as contact information, address, and logo to ensure your profile is complete and professional.</p>
+          <br/>
+          {% include 'includes/alerts.html' %}
+          <br/>
+
+          <form method="POST" action="{% url 'company_dashboard' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group col col-md-6">
+              <label for="company_name">Company Name</label>
+              {{ form.company_name }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="email">Company Email Address</label>
+              {{ form.email }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="{{ form.formatted_phone_number.id_for_label }}">Phone Number</label>
+              {{ form.phone_number }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="{{ form.formatted_phone_number_2.id_for_label }}">Second Phone Number</label>
+              {{ form.phone_number_2 }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="website_address">Company website</label>
+              {{ form.website_address }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="address_line_1">Address Line 1</label>
+              {{ form.address_line_1 }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="address_line_2">Address Line 2</label>
+              {{ form.address_line_2 }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="postal_code">Postal Code</label>
+              {{ form.postal_code }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="city">City</label>
+              {{ form.city }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="state">State</label>
+              {{ form.state }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="country">Country</label>
+              {{ form.country }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="logo">Select Logo</label>
+              {{ form.logo }}
+            </div>
+            <div class="form-group col col-md-12">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </form>
+        </div>
+        <!-- end .smart-forms section -->
+    </div>
+    <div class="text-box padding-3"></div>
+
+    </div>
+
+    </div>
+  </div>
+</section>
+
+  {% endblock %}

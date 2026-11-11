@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-hero">
+  <div class="container reveal">
+    <div class="eyebrow">Tareon knowledge centre</div>
+    <h1>Practical insight for <em>safer, smarter operations.</em></h1>
+    <p>Explore our selected guides and research on connected workers, assisted reality and the industries Tareon serves.</p>
+  </div>
+  <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>Insights &amp; Resources</span></div></div>
+</section>
+
+<section class="resource-section">
+  <div class="container reveal">
+    <div class="section-label">Featured reading</div>
+    <h2>Ideas built for the field.</h2>
+    <p class="resource-intro">Every resource opens in a separate tab for easy reading. Save a copy to share with your team whenever you need it.</p>
+    <div class="resource-grid">
+      {% for resource in resources %}
+      <article class="resource-card reveal">
+        <div class="resource-type"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{ resource.category }}</div>
+        <h3>{{ resource.title }}</h3>
+        <p>{{ resource.summary }}</p>
+        <div class="resource-actions"><a href="{% url 'resource_file' resource.slug %}" target="_blank" rel="noopener">View PDF <i class="fa fa-arrow-up-right-from-square"></i></a><a href="{% url 'resource_file' resource.slug %}?download=1">Download <i class="fa fa-download"></i></a></div>
+      </article>
+      {% empty %}
+      <p style="color:#5c7083">No resources published yet — check back soon.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include 'includes/footer_cta.html' %}
+{% endblock %}

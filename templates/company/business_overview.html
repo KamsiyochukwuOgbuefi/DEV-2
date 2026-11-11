@@ -1,0 +1,86 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+
+{% url 'client_dashboard' as client_dashboard %}
+{% url 'company_dashboard' as c_dashboard %}
+{% url 'business_overview' as BO %}
+
+  <div class="clearfix"></div>
+
+<section>
+  <div class="pagenation-holder" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Admin Dashboard</h3>
+        </div>
+        <div class="col-md-6 text-right">
+          <div class="pagenation_links"><a href="{% url 'home' %}">Home</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!--end section-->
+  <div class="clearfix"></div>
+
+<section class="sec-padding" style="background-color: #ffffff;">
+  <div class="container">
+    <div class="row">
+
+    {% include 'includes/admin_dash_navbar.html' %}
+
+    <div class="col-md-9 col-sm-9 col-xs-12 bmargin">
+      <div class="text-box padding-3 border">
+      <div class=" bmargin">
+
+          <h3>Company Overview</h3>
+          <p>Provide a clear and concise overview of your company. Update the mission, vision, core values, IMS policy, and purpose to reflect your organization's goals and principles.</p>
+          <br/>
+          {% include 'includes/alerts.html' %}
+          <br/>
+
+          <form method="POST" action="{% url 'business_overview' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group col col-md-6">
+              <label for="company">Select Company</label>
+              {{ form.company }}
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="website_address">Enter Mission Statement</label>
+              {{ form.mission }}
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="address_line_1">Enter Company Vision Statement</label>
+              {{ form.vision }}
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="core_values">Enter Company's Goal</label>
+              {{ form.goal }}
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="ims_policy">Enter Business Overview</label>
+              {{ form.business_overview }}
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="purpose">Enter Competitive Advantage</label>
+              {{ form.competive_advantage }}
+            </div>
+            <div class="form-group col col-md-12">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </form>
+        </div>
+        <!-- end .smart-forms section -->
+    </div>
+    <div class="text-box padding-3"></div>
+
+    </div>
+
+    </div>
+  </div>
+</section>
+
+  {% endblock %}

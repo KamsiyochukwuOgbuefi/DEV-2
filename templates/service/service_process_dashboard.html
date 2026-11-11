@@ -1,0 +1,148 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+
+{% url 'client_dashboard' as client_dashboard %}
+{% url 'service_process_dashboard' as SPD %}
+{% url 'update_service_process' updated_sp.id as USP %}
+
+<div class="clearfix"></div>
+
+<section>
+  <div class="pagenation-holder" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Admin Dashboard</h3>
+        </div>
+        <div class="col-md-6 text-right">
+          <div class="pagenation_links"><a href="{% url 'home' %}">Home</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--end section-->
+<div class="clearfix"></div>
+
+<section class="sec-padding" style="background-color: #ffffff;">
+  <div class="container">
+    <div class="row">
+    
+    {% include 'includes/admin_dash_navbar.html' %}
+    
+      <div class="col-md-9 col-sm-9 col-xs-12 bmargin">
+          <div class="text-box padding-3 border">
+              <div class=" bmargin">
+
+              <h3>Service Processes Details</h3>
+              <p>Manage your service processes effectively. Add or update process details, including descriptions and images, to ensure clarity and consistency in your service delivery.</p>
+              <br/>
+              {% include 'includes/alerts.html' %}
+              <br/>
+              {% if request.path == SPD %}
+              <form method="POST" action="{% url 'service_process_dashboard' %}" enctype="multipart/form-data">
+              {% else %}
+              <form method="POST" action="{% url 'update_service_process' updated_sp.id %}" enctype="multipart/form-data">
+              {% endif %}
+
+                {% csrf_token %}
+                {{ form.media.js }}
+                <div class="form-group col col-md-6">
+                  <label for="company">Company</label>
+                  {{ form.company }}
+                </div>
+                <div class="form-group col col-md-6">
+                  <label for="service">Service</label>
+                  {{ form.service }}
+                </div>
+                <div class="form-group col col-md-6">
+                  <label for="name">Process Name</label>
+                  {{ form.name }}
+                </div>
+                <div class="form-group col col-md-6">
+                  <label for="image">Upload Image</label>
+                  {{ form.image }}
+                </div>
+                <div class="form-group col col-md-12">
+                  <label for="description">Describe Process</label>
+                  {{ form.description }}
+                </div>
+
+                <div class="form-group col col-md-12">
+                  {% if request.path == SPD %}
+                  <button type="submit" class="btn btn-primary">submit</button>
+                  {% else %}
+                  <button type="submit" class="btn btn-primary">Update</button>
+                  {% endif %}
+                </div>
+              </form>
+            </div>
+            <!-- end .smart-forms section -->
+        </div>
+        <div class="text-box padding-3"></div>
+
+        {% if service_processes.all %}
+        <div class="text-box padding-3 border">
+          <div class=" bmargin">
+            <div class="cd__main table-wrapper">
+                <!-- Your table -->
+                <table
+                  class="table table-striped"
+                  id="example"
+                  style="width:100%"
+                >
+                  <thead>
+                    <tr>
+                    <th data-label="Company">Company</th>
+                    <th data-label="Service">Service</th>
+                    <th data-label="Process">Process</th>
+                    <th data-label="Edit">Edit</th>
+                    <th data-label="Delete">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for process in service_processes %}
+                      <tr>
+                          <td>{{ process.company }}</td>
+                          <td>{{ process.service }}</td>
+                          <td>{{ process.name }}</td>
+                          <td>
+                            <a title="Edit" href="{{ process.update_url }}" class="btn btn-warning btn-small btn-round" style=>
+                              <span title="Edit">
+                                <i class="fa fa-pencil fa-sm" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                          </td>
+                          <td>
+                            <a title="Delete" href="{{ process.delete_url }}" class="btn btn-danger btn-small btn-round">
+                              <span>
+                                <i class="fa fa-trash fa-sm" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                          </td>
+                      </tr>
+                    {% endfor %}
+    
+                  </tbody>
+                  <tfoot>
+                      <tr>
+                        <th>Company</th>
+                        <th>Service</th>
+                        <th>Process</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                  </tfoot>
+              </table>
+            </div>
+            </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+</div>
+</section>
+
+  {% endblock %}

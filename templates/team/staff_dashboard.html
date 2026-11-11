@@ -1,0 +1,156 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+
+{% url 'client_dashboard' as client_dashboard %}
+{% url 'staff_dashboard' as SD %}
+{% url 'update_staff' updated_staff.id as US %}
+
+<div class="clearfix"></div>
+
+<section>
+  <div class="pagenation-holder" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Admin Dashboard</h3>
+        </div>
+        <div class="col-md-6 text-right">
+          <div class="pagenation_links"><a href="{% url 'home' %}">Home</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!--end section-->
+  <div class="clearfix"></div>
+
+<section class="sec-padding" style="background-color: #ffffff;">
+  <div class="container">
+    <div class="row">
+
+    {% include 'includes/admin_dash_navbar.html' %}
+
+    <div class="col-md-9 col-sm-9 col-xs-12 bmargin">
+      <div class="text-box padding-3 border">
+        <div class=" bmargin">
+
+          <h3>Staff Details</h3>
+          <p>Update and manage staff details here. Add or edit employee information, including their roles, descriptions, and images, to maintain an accurate and professional team profile.</p>
+          <br/>
+          {% include 'includes/alerts.html' %}
+          <br/>
+          {% if request.path == SD %}
+          <form method="POST" action="{% url 'staff_dashboard' %}" enctype="multipart/form-data">
+          {% else %}
+          <form method="POST" action="{% url 'update_staff' updated_staff.id %}" enctype="multipart/form-data">
+          {% endif %}
+          
+            {% csrf_token %}
+            {{ form.media.js }}
+            <div class="form-group col col-lg-12">
+              <label for="company">Company</label>
+              {{ form.company }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="first_name">First Name</label>
+              {{ form.first_name }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="last_name">Last Name</label>
+              {{ form.last_name }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="position">Position</label>
+              {{ form.position }}
+            </div>
+            <div class="form-group col col-md-6">
+              <label for="image">Select Image</label>
+              {{ form.image }}
+            </div>
+            <div class="form-group col-lg-12">
+              <label for="description">Enter Description</label>
+              {{ form.description }}
+            </div>
+            
+            <div class="form-group col col-md-12">
+              {% if request.path == SD %}
+              <button type="submit" class="btn btn-primary">submit</button>
+              {% else %}
+              <button type="submit" class="btn btn-primary">Update</button>
+              {% endif %}
+            </div>
+          </form>
+        </div>
+        <!-- end .smart-forms section -->
+    </div>
+    <div class="text-box padding-3"></div>
+
+    {% if staffs.all %}
+    <div class="text-box padding-3 border">
+    <div class=" bmargin">
+      <div class="cd__main table-wrapper">
+          <!-- Your table -->
+          <table
+            class="table table-striped"
+            id="example"
+            style="width:100%"
+          >
+            <thead>
+              <tr>
+                <th data-label="Full Nmae">Full Nmae</th>
+                <th data-label="position">Position</th>
+                <th data-label="Company">Company</th>
+                <th data-label="Company">Date </th>
+                <th data-label="Edit">Edit</th>
+                <th data-label="Delete">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for employee in staffs %}
+                <tr>
+                    <td>{{ employee.full_name }}</td>
+                    <td>{{ employee.position }}</td>
+                    <td>{{ employee.company }}</td>
+                    <td>{{ employee.created_date }}</td>
+                    <td>
+                      <a title="Edit" href="{{ employee.update_url }}" class="btn btn-warning btn-small btn-round" style=>
+                        <span title="Edit">
+                          <i class="fa fa-pencil fa-sm" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      <a title="Delete" href="{{ employee.delete_url }}" class="btn btn-danger btn-small btn-round">
+                        <span>
+                          <i class="fa fa-trash fa-sm" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </td>
+                </tr>
+              {% endfor %}
+
+            </tbody>
+            <tfoot>
+                <tr>
+                  <th>Full Nmae</th>
+                  <th>Job Title</th>
+                  <th>Company</th>
+                  <th>Date</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+            </tfoot>
+        </table>
+      </div>
+      </div>
+  </div>
+  {% endif %}
+
+    </div>
+  </div>
+  </div>
+</section>
+
+  {% endblock %}

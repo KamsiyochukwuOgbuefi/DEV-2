@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="page-hero">
+  <div class="container reveal">
+    <div class="eyebrow">Client voices</div>
+    <h1>People say — <em>in their words.</em></h1>
+    <p>Unfiltered feedback from partners who trust Tareon with critical operations.</p>
+  </div>
+  <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>Testimonials</span></div></div>
+</section>
+
+<section class="t-section">
+  <div class="container">
+    <div class="t-partner-grid reveal">
+      {% for testimonial in testimonials %}
+      <div class="t-process-card"><div class="t-step" style="font-size:32px">&ldquo;</div><p style="margin:12px 0 20px">{{ testimonial.content }}</p><p style="color:var(--navy);font-weight:800">{{ testimonial.name }}${% if testimonial.location %}<span style="color:#8aa3b1;font-weight:400"> · {{ testimonial.location }}</span>{% endif %}</p></div>
+      {% empty %}
+      <div class="t-process-card"><p>Testimonials coming soon — our clients’ stories will appear here.</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include 'includes/footer_cta.html' %}
+{% endblock %}

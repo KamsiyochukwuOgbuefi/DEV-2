@@ -1,0 +1,208 @@
+WEB PROJECT COLOR PALETTE
+
+#be4442 — Persian Red (Rusty Red / Coral Red)
+#2e43ab — Cobalt Blue (Royal Blue / Sapphire Blue)
+#f5a623 — Amber Gold (Accent)
+#29b6f6 — Sky Blue (Highlight)
+#1c1c1c — Rich Black (Dark Neutral)
+#f4f5f7 — Ghost White (Light Neutral)
+#222222 — Charcoal (Primary Text)
+#6b6b6b — Cool Gray (Secondary Text)
+
+Recommended Theme:
+- Background: #f4f5f7
+- Text: #222222
+- Primary Button: #2e43ab
+ 
+- Accent / CTA: #bd4341
+- Highlight: #f5a623- Dark Mode Base: #1c1c1c
+
+Deploying django project to vps:
+Prerequisites:
+Create a requirements.txt file that contains all packages used in project:
+
+pip freeze > requirements.txt
+Set up static files:
+
+Install whitenoise:
+pip install whitenoise
+pip freeze > requirements.txt
+Paste the following at the top of middleware list:
+"whitenoise.middleware.WhiteNoiseMiddleware",
+Add the following:
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+Collect static files:
+python manage.py collectstatic
+Push to github repository
+
+Ssh into server:
+
+run:
+ssh username@server_ip_address
+Enter password  
+Update & Upgrade Server:
+
+sudo apt-get update
+sudo apt-get upgrade  
+Install python & pip:
+
+sudo apt install python3
+sudo apt install python3-pip  
+Create & activate virtual environment:
+
+virtualenv /opt/myproject
+source /opt/myproject/bin/activate  
+Clone Repository:
+
+cd /opt/myproject
+mkdir myproject
+It may seem redundant to have two directories with the same name; however, 
+it makes it so that your virtualenv name and project name are the same.
+cd myproject
+check if git is installed:
+git status
+sudo apt-get install git
+Clone repo: git clone git@github.com:King-Greatman-Spirit/tareon_sql.git
+install requirements:
+cd repo-name
+pip install -r requirements.txt
+pip install gunicorn  
+Nginx Configuration:
+
+Install nginx:
+
+sudo apt install nginx
+sudo nano /etc/nginx/sites-available/myproject
+
+Type the following into the file:
+
+server {
+   listen 80;
+   server_name 5.181.218.82;;
+
+   access_log /var/log/nginx/website-name.log;
+
+   location /static/ {
+       alias /opt/myproject/myproject/tareon/static;
+   }
+
+   location / {
+       proxy_pass http://127.0.0.1:8000;
+       proxy_set_header X-Forwarded-Host $server_name;
+       proxy_set_header X-Real-IP $remote_addr;
+       add_header P3P 'CP="ALLDSP COR PSAa PSDa OURNOR ONL UNI COM NAV"';
+   }
+}
+Now we need to set up a symbolic link in the /etc/nginx/sites-enabled directory that points to this configuration file. That is how NGINX knows this site is active. Change directories to /etc/nginx/sites-enabled like this:
+
+cd /etc/nginx/sites-enabled
+sudo ln -s ../sites-available/myproject
+Go to:
+
+/etc/nginx/nginx.conf
+uncomment this line:
+# server_names_hash_bucket_size 64;
+Restart nginx:
+
+sudo service nginx restart
+ 
+
+Adjusting the Firewall
+
+Before testing Nginx, the firewall software needs to be adjusted to allow access to the service. Nginx registers itself as a service with ufw upon installation, making it straightforward to allow Nginx access.
+
+sudo apt-get install ufw
+ufw - Uncomlicated Firewall
+sudo ufw allow 8000
+
+Restart nginx:
+
+sudo service nginx restart  
+Testing configuration:
+
+Run gunicorn:
+cd /opt/myproject/myproject/repo-name
+gunicorn --bind 0.0.0.0:8000 tareon.wsgi
+Visit your project on your server ip address on port 8000:
+yourServerIp:8000
+ 
+
+Connecting domain:
+
+open your domain registrar and open your dns settings for the specified domain
+
+Add an A record with name @, pointing to the ip address of the server you are hosting your project on
+
+Save changes
+
+Open your nginx configuration file:
+
+sudo nano /etc/nginx/sites-available/myproject
+Make the following changes:
+
+server {
+    listen 80;
+    server_name tareonsecurity.com www.tareonsecurity.com;
+    return 301 https://$host$request_uri;
+
+    access_log /var/log/nginx/galax.log;
+    error_log /var/log/nginx/galax_error.log;
+
+    location /static/ {
+        alias /opt/myproject/myproject/tareon_sql/static/;
+    }
+
+    location /media/ {
+        alias /opt/myproject/myproject/tareon_sql/media/;
+    }
+
+    location / {
+        proxy_pass http://5.181.218.82:8000;  # Ensure this is the correct Gunicorn server
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+Restart nginx:
+
+sudo service nginx restart or sudo systemctl restart nginx
+sudo systemctl restart gunicorn
+
+Wait for dns changes to propagate and check your website on your connected domain  
+
+Install SSL on vps with Let's Encrypt (Requires domain):
+
+sudo apt install certbot
+sudo apt install certbot python3-certbot-nginx
+run the following and follow the process:
+sudo certbot --nginx -d tareonsecurity.com
+check nginx configuration:
+sudo nginx -t
+reload nginx: sudo systemctl reload nginx
+run gunicorn:
+gunicorn --bind 0.0.0.0:8000 tareon.wsgi
+Run gunicorn in the background: nohup gunicorn --bind 0.0.0.0:8000 tareon.wsgi &  
+
+kill gunicorn running in background:
+
+pkill gunicorn  
+Making changes
+
+Refrences
+Articles:
+https://www.digitalocean.com/community/tutorials/how-to-deploy-a-local-django-app-to-a-vps
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-22-04
+
+https://stackoverflow.com/questions/37339383/nginx-gunicorn-django-not-working
+
+sudo nano settings.py

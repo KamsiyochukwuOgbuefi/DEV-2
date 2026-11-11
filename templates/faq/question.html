@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="page-hero">
+  <div class="container reveal">
+    <div class="eyebrow">Help centre</div>
+    <h1>{{ category.name }} — <em>answers.</em></h1>
+    <p>Everything you asked, answered clearly.</p>
+  </div>
+  <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><a href="{% url 'faq' %}">FAQ</a><i class="fa fa-chevron-right"></i><span>{{ category.name }}</span></div></div>
+</section>
+
+<section class="t-section">
+  <div class="container">
+    <div class="t-faq-grid reveal">
+      <div>
+        <p class="t-eyebrow">Q &amp; A</p>
+        <h2 class="t-h-lg" style="margin-bottom:30px">{{ category.name }}</h2>
+        {% for question in questions %}
+        <div class="t-qa"><h3><span>Q.</span> {{ question.question }}</h3><p>{{ question.answer }}</p></div>
+        {% empty %}
+        <p style="color:#5c7083">No questions in this category yet.</p>
+        {% endfor %}
+      </div>
+      <div class="t-faq-side">
+        <h4><a href="{% url 'faq' %}">All categories</a></h4>
+        <ul>{% for category in categories %}<li><a href="{% url 'faq_question' category.id %}">{{ category.name }}</a></li>{% endfor %}</ul>
+        <h4 style="margin-top:26px">Still need help?</h4>
+        <p style="color:#536d81;font-size:14px;line-height:1.75">Our team replies within one business day.</p>
+        <a class="t-btn t-btn-dark" href="{% url 'contact_us' %}" style="margin-top:16px">Contact us <i class="fa fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+{% include 'includes/footer_cta.html' %}
+{% endblock %}

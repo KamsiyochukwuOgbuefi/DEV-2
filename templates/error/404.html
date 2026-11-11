@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <div class="clearfix"></div>
+  
+ <section class="sec-padding">
+    <div class="container">
+      <div class="row">
+      
+		<div class="error_holder">
+        <h1 class="uppercase title text-orange-2">404</h1>
+        <br/>
+        <h2 class="uppercase">Oops... Page Not Found!</h2>
+        <p>Sorry the Page Could not be Found here. Try using the button below to go to main page of the site</p>
+        <br/>
+        <br/>
+        <br/>
+        <div class="error-search-box">
+          <form method="get" action="index.html">
+            <input class="email_input" name="samplees" id="samplees" value="E-mail Address" onFocus="if(this.value == 'E-mail Address') {this.value = '';}" onBlur="if (this.value == '') {this.value = 'E-mail Address';}" type="text">
+            <input name="" value="Search" class="input_submit" type="submit">
+          </form>
+        </div>
+      </div>
+      
+      </div>
+    </div>
+  </section>
+  <!--end item -->
+  <div class="clearfix"></div>
+  
+{% endblock %}

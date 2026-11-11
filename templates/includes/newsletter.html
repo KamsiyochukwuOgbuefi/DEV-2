@@ -1,0 +1,21 @@
+<div class="modal" id="newsletter" tabindex="-1" role="dialog" style="top:15%;">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius:14px;overflow:hidden">
+      <div class="modal-header" style="background:#09223a;color:#fff;border:0">
+        <h4 class="modal-title" style="color:#fff">Join our newsletter</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:#fff;opacity:1">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color:#537083">Practical insight for safer, smarter operations — delivered occasionally, never spam.</p>
+        <form method="POST" action="{% url 'subscribe' %}">
+          {% csrf_token %}
+          <div class="t-field"><label for="{{ form.full_name.id_for_label }}">Full name</label>{{ form.full_name }}</div>
+          <div class="t-field"><label for="{{ form.email.id_for_label }}">Email</label>{{ form.email }}</div>
+          <div class="t-field"><label for="{{ form.phone_number.id_for_label }}">Phone (optional)</label>{{ form.phone_number }}</div>
+          <button type="submit" class="t-btn t-btn-dark" style="width:100%;justify-content:center;margin-top:8px">Subscribe <i class="fa fa-paper-plane"></i></button>
+          <button type="button" class="t-btn t-btn-outline" data-dismiss="modal" style="width:100%;justify-content:center;margin-top:10px">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

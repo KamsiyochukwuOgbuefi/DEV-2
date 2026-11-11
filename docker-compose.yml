@@ -1,0 +1,44 @@
+# version: "3.9"
+
+services:
+  app:
+    volumes:
+      - ./static:/app/static   # Make sure collectstatic puts files here
+      - ./media:/app/media               # Ensure media files are placed here
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./static:/app/static  # Make sure Nginx points to this
+      - ./media:/app/media
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+
+  db:
+    image: postgres:13-alpine
+    restart: always
+    env_file:
+      - .env
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  static:   # Define the volume explicitly if needed
+  postgres_data:

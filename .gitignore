@@ -1,0 +1,10 @@
+__pycache__/
+venv
+.env
+# .env.prod
+.DS_Store
+*.sqlite3
+# tareon.json
+# commands.txt
+
+

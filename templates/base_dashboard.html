@@ -1,0 +1,281 @@
+{% load static %}
+
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<!--<![endif]-->
+<html lang="en">
+<head>
+<title>Tareon | {% if title %}{{title}}{% else %} {% endif %} </title>
+<meta charset="utf-8">
+<!-- Meta -->
+<meta name="keywords" content="security services, risk assessment, surveillance solutions, corporate security, cybersecurity, executive protection, security consulting, technology-enabled security, asset protection, access control, security patrol, emergency response, threat management, investigative services, security training" />
+<meta name="author" content="Tareon Security Company | Developed by King Greatman Spirit">
+<meta name="robots" content="index, follow" />
+<meta name="description" content="Tareon Security Company provides top-tier security solutions, including corporate security, surveillance systems, cybersecurity, executive protection, and risk assessment. With advanced technology and a highly trained team, we deliver innovative security strategies tailored to protect businesses, individuals, and assets across multiple industries." />
+
+<!-- this styles only adds some repairs on idevices  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="{% static 'images/favicon.jpg' %}">
+
+<!-- Google fonts - witch you want to use - (rest you can just remove) -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+
+<!-- Font Awesome library -  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-o4n7GyXt1N2X23Lgsx8t0I7ZfF7wX6j5z3UXA/yIggD00NJ6SvNj7wI1ylK9Un32E" crossorigin="anonymous">
+
+<!-- Include DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- stylesheets -->
+<link rel="stylesheet" media="screen" href="{% static 'js/bootstrap/bootstrap.min.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'js/mainmenu/menu.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/default.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/layouts.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/shortcodes.css' %}" type="text/css" />
+<link rel="stylesheet" media="screen" href="{% static 'css/responsive-leyouts.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'js/masterslider/style/masterslider.css' %}" />
+<link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/Simple-Line-Icons-Webfont/simple-line-icons.css' %}" media="screen" />
+<link rel="stylesheet" href="{% static 'css/et-line-font/et-line-font.css' %}">
+<link href="{% static 'js/animations/css/animations.min.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="{% static 'js/cubeportfolio/cubeportfolio.min.css' %}">
+<link href="{% static 'js/owl-carousel/owl.carousel.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'js/ytplayer/ytplayer.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'js/smart-forms/smart-forms.css' %}">
+<link rel="stylesheet" href="{% static 'css/et-line-font/et-line-font.css' %}">
+
+<!-- jQuery -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+
+<!-- Bootstrap 5 CSS -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"> -->
+<!-- Data Table CSS -->
+<link rel='stylesheet' href='https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css'>
+<!-- Font Awesome CSS -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+<!-- Remove the below comments to use your color option -->
+<!--<link rel="stylesheet" href="css/colors/lightblue.css" />-->
+<!--<link rel="stylesheet" href="css/colors/orange.css" />-->
+<!--<link rel="stylesheet" href="css/colors/green.css" />-->
+<!--<link rel="stylesheet" href="css/colors/pink.css" />-->
+<!--<link rel="stylesheet" href="css/colors/red.css" />-->
+<!--<link rel="stylesheet" href="css/colors/purple.css" />-->
+<!--<link rel="stylesheet" href="css/colors/bridge.css" />-->
+<!--<link rel="stylesheet" href="css/colors/yellow.css" />-->
+<!--<link rel="stylesheet" href="css/colors/violet.css" />-->
+<!--<link rel="stylesheet" href="css/colors/cyan.css" />-->
+<!--<link rel="stylesheet" href="css/colors/mossgreen.css" />-->
+
+</head>
+
+<body>
+<div class="site_wrapper">
+
+  <!-- navbar -->
+  {% include 'includes/navbar.html' %}
+
+  {% block content %}
+  <!-- content -->
+  {% endblock %}
+
+  <!-- footer -->
+  {% include 'includes/footer_dashboard.html' %}
+
+
+  <a href="#" class="scrollup"></a><!-- end scroll to top of the page--> 
+  
+</div>
+<!--end sitewraper--> 
+
+<!-- ========== Js Files ========== --> 
+
+<script type="text/javascript" src="{% static 'js/universal/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/mainmenu/customeUI.js' %}"></script>
+<script src="{% static 'js/mainmenu/jquery.sticky.js' %}"></script>
+<script src="{% static 'js/masterslider/masterslider.min.js' %}"></script>
+<script type="text/javascript">
+(function($) {
+"use strict";
+	var slider = new MasterSlider();
+	// adds Arrows navigation control to the slider.
+	slider.control('arrows');
+	slider.control('bullets');
+
+	slider.setup('masterslider' , {
+			width:1600,    // slider standard width
+			height:650,   // slider standard height
+			space:0,
+			speed:45,
+			layout:'fullwidth',
+			loop:true,
+			preload:0,
+			autoplay:true,
+			view:"parallaxMask"
+	});
+})(jQuery);
+</script>
+
+<!-- Toggles password visibility when the eye icon is clicked -->
+<script>
+    document.querySelectorAll(".toggle-password").forEach(item => {
+        item.addEventListener("click", function() {
+            let targetId = this.getAttribute("data-target");
+            let input = document.getElementById(targetId);
+            let icon = this.querySelector("i");
+            
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        });
+    });
+</script>
+
+
+<!-- jQuery -->
+<script src='https://code.jquery.com/jquery-3.7.0.js'></script>
+
+
+<script type="text/javascript" src="{% static 'js/ytplayer/jquery.mb.YTPlayer.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ytplayer/elementvideo-custom.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ytplayer/play-pause-btn.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/cubeportfolio/jquery.cubeportfolio.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/cubeportfolio/main.js' %}"></script>
+<script src="{% static 'js/animations/js/animations.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/animations/js/appear.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/scrolltotop/totop.js' %}"></script>
+<script src="{% static 'js/owl-carousel/owl.carousel.js' %}"></script>
+<script src="{% static 'js/owl-carousel/custom.js' %}"></script>
+
+<script src="{% static 'js/scripts/functions.js' %}" type="text/javascript"></script>
+<script type="text/javascript" src="{% static 'js/smart-forms/jquery.form.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/smart-forms/jquery.validate.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/smart-forms/additional-methods.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/smart-forms/smart-form.js' %}"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/tZ1aZI9I0p5MW5nSE8CjhB5L/wwxg8uCSPZI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eaBoe/6sF5ovQyivz/1yXuJ6AZA/UHjzTO+qrS9ZjLyYD+J1ELIIvbACBDX6jFu" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+
+
+
+<!-- Data Table JS -->
+<script src='https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js'></script>
+<script src='https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js'></script>
+<script src='https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js'></script>
+
+<!-- XDSoft DateTimePicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+<!-- This jQuery script updates the value of a "slug" input field based on the input in a "service" input field.
+It converts the text to lowercase, replaces spaces with hyphens, and assigns the result to the "slug" field. -->
+<script>
+	$(".service").on('keyup',function(){
+		$(".slug").val($(this).val().toLowerCase().split(' ').join('-'));
+	});
+</script>
+
+<!-- This jQuery script initializes a datetime picker for elements with the class "datetimepicker."
+It uses the format 'Y-m-d H:i:s' for the date and time display. -->
+<script>
+	$(function () {
+	  $(".datetimepicker").datetimepicker({
+		format: 'Y-m-d H:i:s',
+	  });
+	});
+</script>
+
+
+<!-- DataTable Initialization Script: Enhances 'example' table with customized features like disabled sorting on the last column,
+arrow-based pagination, and a dropdown for result count. Designed for tables with varying column counts.t -->
+ <script>
+$(document).ready(function() {
+	// Set a variable for the empty table message
+	var emptyTableMessage = "No Records Found";
+
+	// Check if the placeholder for the empty table message exists
+	if ($('.empty-table-message').length) {
+		// Get the custom message from the placeholder's text
+		emptyTableMessage = $('.empty-table-message').text().trim();
+	}
+
+	// Initialize DataTable for the table with the id 'example'
+	$('#example').DataTable({
+		"columnDefs": [
+			{
+				// Disable sorting on the last column for each table
+				"orderable": false,
+				"targets": function (columnIdx, column) {
+					// Get the total number of columns in the current table
+					var numColumns = column.table[0].getElementsByTagName('thead')[0].getElementsByTagName('th').length;
+					// Disable sorting on the last column (assuming the table has at least one column)
+					return columnIdx === numColumns - 1 ? true : false;
+				}
+			}
+		],
+		"lengthMenu": [5, 10, 20, 30, 40, 50, -1], // Set available options
+		"pageLength": 5, // Set the default page length
+		language: {
+			// Customize pagination prev and next buttons: use arrows instead of words
+			'paginate': {
+				'previous': '<span class="fa fa-chevron-left"></span>',
+				'next': '<span class="fa fa-chevron-right"></span>'
+			},
+			// Customize number of elements to be displayed
+            "lengthMenu": 'Display <select class="form-control input-sm">'+
+                '<option value="5" selected>5</option>'+ <!-- Set 'selected' for the default option -->
+                '<option value="10">10</option>'+
+				'<option value="20">20</option>'+
+				'<option value="30">30</option>'+
+				'<option value="40">40</option>'+
+				'<option value="50">50</option>'+
+				'<option value="-1">All</option>'+
+				'</select> results',
+			// Set the message for an empty table
+			"emptyTable": function() {
+				// Check if the table has a single cell with colspan
+				if ($('#example tbody td[colspan]').length) {
+					// Return the content of the single cell as the empty table message
+					return $('#example tbody td[colspan]').text().trim();
+				} else {
+					// Return the default message for an empty table
+					return emptyTableMessage;
+				}
+			}
+		}
+	});
+});
+</script>
+
+<!-- JavaScript function to cancel/reset the form -->
+<script>
+    // Define a JavaScript function named 'cancelForm'
+    function cancelForm() {
+        // Get the form element by its ID ('serviceApplicationForm')
+        var form = document.getElementById('serviceApplicationForm');
+
+        // Use the 'reset' method on the form to clear all input fields
+        form.reset();
+    }
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,275 @@
+# DJANGO COMMANDS
+python -m pip install --upgrade pip #Pip upgrade
+# Once upgraded, install virtualenv using pip3:
+python -m venv venv # Create virtual environment
+source venv/bin/activate  #for mac users
+source venv/Scripts/activate  #for windows users
+
+django-admin startapp service
+ 
+django-admin startproject tareon
+python manage.py startapp accounts
+python manage.py startapp company
+python manage.py startapp blog
+python manage.py startapp enquiry
+python manage.py startapp service
+python manage.py startapp staff
+python manage.py startapp project
+python manage.py startapp faq
+python manage.py startapp industry
+
+python manage.py dumpdata --indent 4 --natural-foreign --natural-primary -e auth.permission -e contenttypes > tareon.json
+python manage.py loaddata tareon.json
+
+ls base
+pip install -r requirements.txt #Install all pkg in requirements.txt
+pip freeze > requirements.txt # move pkg to requirements.txt
+pip install # Install all pkgs
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver #To run server
+python manage.py createsuperuser #To create admin user
+python manage.py collectstatic # Collects and prepares static files for production deployment.
+python manage.py test # To test project
+python manage.py check
+python manage.py reset_db  # To erase all data in your database
+
+docker-compose up   # To start the container
+#retain the existing containers and only restart the services
+docker-compose restart  
+docker-compose down  # This will stop and remove the containers.
+docker-compose up -d  # This will recreate and start the containers with the updated configuration.
+docker compose up --build
+docker-compose up --build -d
+docker-compose logs db   # To check the logs
+docker-compose exec app pip install django
+docker-compose exec app pip install --upgrade pip
+docker-compose exec app pip install --upgrade -r requirements.txt
+docker-compose down --volumes # Pull down volumes
+docker-compose exec app python manage.py startapp faq
+docker-compose exec app pip install django
+docker-compose run --rm app # django docker test
+docker-compose run app python manage.py migrate
+docker-compose run app  python manage.py collectstatic
+docker-compose run app  python manage.py createsuperuser --no-input
+python manage.py collectstatic --no-input --ignore admin
+docker-compose run app python manage.py makemigrations --fake
+docker builder prune --all # remove all build cache
+docker image prune -a # remove all unused images (both dangling and unreferenced)
+docker container prune # remove all containers that are not currently running
+docker network prune
+docker volume prune
+docker system prune # remove all unused images, containers, networks, and volumes,
+
+# GENERAL COMMANDS
+rm -rf galaxy/ #to remove folder
+rm -rf galaxy/* #to remove all directories in folder
+ls -le #display all folders with access
+cd .. #go back to the prev folders
+rm -fr galaxy # delete folder with git inside
+rm -r galaxy # delete folder 
+vim commands.txt
+cat commands.txt
+Esc :wq! Enter
+touch commands.txt
+Note that the tilde (~) represents your home directory.
+mv <source_file> ~ <destination_folder>  #to move a file to another folder 
+
+create a new repository on the command line
+git checkout Dev
+echo "# tareon" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/King-Greatman-Spirit/tareon.git
+git push -u origin main
+
+push an existing repository from the command line
+git remote add origin https://github.com/King-Greatman-Spirit/tareon.git
+git branch -M main
+git push -u origin main
+
+
+cd /path/to/your/project  # Navigate to your project directory
+git init                 # Initialize the Git repository
+git remote add origin https://github.com/King-Greatman-Spirit/galaxy.git  # Link your local repo to GitHub
+git add .                # Stage all files for commit
+git commit -m "Initial commit or any relevant message"  # Commit the files with a message
+git push -u origin dev  # Push changes to GitHub (use 'main' if that's your default branch)
+
+#updates your local information about the remote branch but doesn’t change your local files
+git fetch origin
+
+
+# Stash your local changes (if you want to keep them for later)
+git stash
+
+# Fetch and force pull the latest changes from the remote dev branch
+git pull origin dev
+
+#To run test files in docker
+$ docker compose run --rm app
+
+git push -u origin main -f
+
+
+HEROKU Push
+git init
+git add .
+git commit -am "commit message"
+git push heroku master
+heroku open
+
+#Gudie to Deploy Djangoz-bNBjPut
+https://testdriven.io/blog/django-lets-encrypt/
+
+
+VPS DETAILS:
+
+Hostname: webserver.galaxypl.com
+password: z-bNBjPut@pFjY2QMa?3
+IPv4: 5.181.218.82
+SSH username: root
+OS: Ubuntu 24.04
+Server location: United States - Boston
+
+ssh root@5.181.218.82
+
+Official Email Login Details
+Email: info@galaxypl.com
+Password: 7$Uc;h9!@r]
+
+Hostinger Login Details
+Hostinger: sam12oko@gmail.com
+Psw: b2+W8g_4.pcr
+
+To **save** and **exit** after editing in `nano`, follow these steps:
+
+1. **Press** `CTRL + X` (to exit).
+2. **Press** `Y` (to confirm saving changes).
+3. **Press** `Enter` (to save and exit).
+
+Your changes will be saved in `nginx/default.conf`. ✅
+
+git clone git@github.com:King-Greatman-Spirit/galaxy.git
+
+#If you want to delete everything inside a directory but not the directory itself
+rm -rf /path/to/directory/{*,.*} 2>/dev/null
+
+
+MAIN WEBSITE COLOR CODE
+
+Dark Red – #540909
+Sage / Olive Beige – #aba073
+Deep Navy Blue – #111a49
+gray - #727272; #242424; #626262;
+
+git clone https://github.com/King-Greatman-Spirit/tareon.git
+
+
+Domain Name: https://truehost.com.ng/cloud/index.php?rp=/login
+Email: tareonserviceslimited@gmail.com
+Password: Des0lami1.2.30
+
+VPS: ?xFOdA+MK#CLxR4;VFg7
+
+
+
+VPS COMMANDS
+sudo apt update && sudo apt upgrade -y
+
+Step 2: Set up Python environment
+
+Create a virtual environment for Tareon:
+
+cd /var/www/tareon
+python3 -m venv venv
+source venv/bin/activate
+
+
+Install Django and project dependencies:
+
+pip install --upgrade pip
+pip install -r requirements.txt  # if project has requirements.txt
+
+sudo systemctl start tareon
+sudo systemctl enable tareon
+  # check if running
+
+Enable site and restart Nginx:
+
+sudo ln -s /etc/nginx/sites-available/tareon /etc/nginx/sites-enabled
+sudo nginx -t
+sudo systemctl restart nginx
+
+Step 6: Enable HTTPS
+
+Install Certbot:
+
+sudo apt install certbot python3-certbot-nginx -y
+
+
+Run Certbot to generate SSL:
+
+sudo certbot --nginx -d  tareonservices.com -d www.tareonservices.com
+
+
+Test HTTPS access:
+
+https://tareonservices.com
+
+cd /var/www/tareon
+python3 -m venv venv
+source venv/bin/activate
+
+python manage.py collectstatic --no-input
+pip install --upgrade pip
+pip install django gunicorn
+pip install -r requirements.txt  # if project has requirements.txt
+
+sudo systemctl start tareon
+sudo systemctl enable tareon
+sudo systemctl status tareon
+
+sudo ln -s /etc/nginx/sites-available/tareon /etc/nginx/sites-enabled
+sudo nginx -t
+sudo systemctl restart nginx
+sudo apt install certbot python3-certbot-nginx -y
+
+#!/bin/bash
+sudo systemctl restart tareon
+sudo nginx -t && sudo systemctl restart nginx
+echo "Gunicorn + Nginx restarted successfully."
+
+sudo certbot --nginx -d  tareonservices.com -d www.tareonservices.com
+
+
+dig @8.8.8.8 tareonservices.com A +short
+dig @1.1.1.1 tareonservices.com A +short
+dig @8.8.8.8 www.tareonservices.com A +short
+dig @1.1.1.1 www.tareonservices.com A +short
+dig +trace tareonservices.com
+
+
+✅ What to do next (very important)
+
+Now run this again on your VPS:
+
+dig tareonservices.com A +short
+dig www.tareonservices.com A +short
+
+
+You should now see:
+
+88.223.94.33
+88.223.94.33
+
+
+If you see that, then immediately run SSL:
+
+sudo certbot --nginx -d tareonservices.com -d www.tareonservices.com
+
+# Convert it to UTF-8
+iconv -f WINDOWS-1252 -t UTF-8 tareon.json -o tareon-utf8.json
+python manage.py loaddata tareon-utf8.json

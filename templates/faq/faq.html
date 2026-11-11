@@ -4,7 +4,7 @@
 <section class="page-hero">
   <div class="container reveal">
     <div class="eyebrow">Help centre</div>
-    <h1>Questions, answered <em>clearly.</em></h1>
+    <h1>Questions, answered <em class="emph">clearly.</em></h1>
     <p>Everything you need to know about working with Tareon — technology, engineering, procurement and security.</p>
   </div>
   <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>FAQ</span></div></div>
@@ -13,9 +13,9 @@
 <section class="t-section">
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:52px">
-      <p class="t-eyebrow center">Browse by topic</p>
-      <h2 class="t-h-lg">Find your <em>answer.</em></h2>
-      <p class="t-lead" style="margin:0 auto">Five focused areas, each written by the people who do the work.</p>
+      <p class="eyebrow center">Browse by topic</p>
+      <h2>Find your <em class="emph">answer.</em></h2>
+      <p class="lead" style="margin:0 auto">Five focused areas, each written by the people who do the work.</p>
     </div>
 
     <div class="faq-cat-grid reveal">
@@ -35,13 +35,13 @@
     <div class="reveal" style="margin-top:80px">
       <div class="faq-two-col">
         <div>
-          <p class="t-eyebrow">Most asked</p>
-          <h2 class="t-h-lg" style="margin-bottom:28px">The questions we hear <em>most.</em></h2>
+          <p class="eyebrow">Most asked</p>
+          <h2>The questions we hear <em class="emph">most.</em></h2>
           <div class="faq-accordion">
             {% for q in featured %}
             <details class="faq-item"{% if forloop.first %} open{% endif %}>
               <summary><span>{{ q.question }}</span><i class="fa fa-plus"></i></summary>
-              <div class="faq-answer"><p>{{ q.answer }}</p><a href="{% url 'faq_question' q.category.id %}" class="t-link">More in {{ q.category.name }} <i class="fa fa-arrow-right"></i></a></div>
+              <div class="faq-answer"><p>{{ q.answer }}</p><a href="{% url 'faq_question' q.category.id %}" class="link-cta">More in {{ q.category.name }} <i class="fa fa-arrow-right"></i></a></div>
             </details>
             {% endfor %}
           </div>
@@ -54,7 +54,7 @@
             <li><i class="fa fa-phone"></i> {{ company_links.formatted_phone_number }}</li>
             <li><i class="fa fa-clock"></i> Response within one business day</li>
           </ul>
-          <a class="t-btn t-btn-light" href="{% url 'contact_us' %}" style="width:100%;justify-content:center">Contact us <i class="fa fa-arrow-right"></i></a>
+          <a class="btn btn--ghost-dark" href="{% url 'contact_us' %}" style="width:100%;justify-content:center">Contact us <i class="fa fa-arrow-right"></i></a>
           <a class="faq-wa" href="https://wa.me/2348138271724?text=Hello%20Tareon%2C%20I%20have%20a%20question." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </aside>
       </div>

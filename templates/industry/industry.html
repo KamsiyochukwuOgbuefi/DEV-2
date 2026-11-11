@@ -14,18 +14,18 @@
   <div class="container">
     <div class="t-service-hero-grid reveal">
       <div>
-        <p class="t-eyebrow">Industry perspective</p>
-        <h2 class="t-h-lg">{{ industries.name }} — <em>understood deeply.</em></h2>
-        <p class="t-lead">{{ industries.description }}</p>
-        <p style="color:#536d81;font-size:16px;line-height:1.8;margin:20px 0 28px">We tailor security and operational solutions to the realities of this sector — combining technology, people and process to deliver measurable, lasting results.</p>
-        <a class="t-btn t-btn-dark" href="{% url 'contact_us' %}">Discuss your requirements <i class="fa fa-arrow-right"></i></a>
+        <p class="eyebrow">Industry perspective</p>
+        <h2>{{ industries.name }} — <em class="emph">understood deeply.</em></h2>
+        <p class="lead">{{ industries.description }}</p>
+        <p style="color:var(--muted);font-size:16px;line-height:1.8;margin:20px 0 28px">We tailor security and operational solutions to the realities of this sector — combining technology, people and process to deliver measurable, lasting results.</p>
+        <a class="btn btn--dark" href="{% url 'contact_us' %}">Discuss your requirements <i class="fa fa-arrow-right"></i></a>
       </div>
       <div>{% if industries.image %}<img src="{{ industries.image.url }}" alt="{{ industries.name }}">{% else %}<img src="{% static 'images/slides/industry.jpg' %}" alt="{{ industries.name }}">{% endif %}</div>
     </div>
 
     <div class="reveal" style="margin-top:80px">
-      <p class="t-eyebrow">What this looks like</p>
-      <h2 class="t-h-lg">Solutions for <em>this sector.</em></h2>
+      <p class="eyebrow">What this looks like</p>
+      <h2>Solutions for <em class="emph">this sector.</em></h2>
       <div class="t-flip-grid">
         {% for process in industry_processes %}
         <div class="flip-card">{% if process.image %}<img src="{{ process.image.url }}" alt="{{ process.name }}">{% endif %}<div class="flip-body"><h3>{{ process.name }}</h3><p>{{ process.description }}</p></div></div>
@@ -39,11 +39,13 @@
   </div>
 </section>
 
-<section class="th-features">
+<section class="th-features section--sm">
   <div class="container reveal">
-    <p class="t-eyebrow" style="color:#73e5d5">Securing your world</p>
-    <h2 class="t-h-lg">Excellence in every <em>engagement.</em></h2>
-    <p style="color:#c5d8e1;max-width:700px;font-size:16px;line-height:1.8">At Tareon Services Limited, we deliver intelligent, technology-driven security and operational solutions designed to protect businesses, individuals and communities — ensuring safety, reliability and peace of mind for every client.</p>
+    <div class="th-section-head center">
+      <p class="eyebrow center">Securing your world</p>
+      <h2>Excellence in every <em class="emph">engagement.</em></h2>
+    </div>
+    <p style="color:var(--muted);max-width:700px;font-size:16px;line-height:1.8;margin:0 auto">At Tareon Services Limited, we deliver intelligent, technology-driven security and operational solutions designed to protect businesses, individuals and communities — ensuring safety, reliability and peace of mind for every client.</p>
   </div>
 </section>
 {% include 'includes/footer_cta.html' %}

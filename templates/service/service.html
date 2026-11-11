@@ -14,18 +14,18 @@
   <div class="container">
     <div class="t-service-hero-grid reveal">
       <div>
-        <p class="t-eyebrow">Our {{ services.name }} Process</p>
-        <h2 class="t-h-lg">{{ services.name }} — <em>delivered with precision.</em></h2>
-        <p class="t-lead">{{ services.description }}</p>
-        <p style="color:#536d81;font-size:16px;line-height:1.8;margin:20px 0 28px">We tailor every engagement to your operating environment — pairing senior oversight with hands-on execution so outcomes are measurable and enduring.</p>
-        <div class="th-actions"><a class="t-btn t-btn-dark" href="{% url 'contact_us' %}">Discuss your project <i class="fa fa-arrow-right"></i></a><a class="t-btn t-btn-outline" href="{% url 'company' %}">About Tareon</a></div>
+        <p class="eyebrow">Our {{ services.name }} Process</p>
+        <h2>{{ services.name }} — <em class="emph">delivered with precision.</em></h2>
+        <p class="lead">{{ services.description }}</p>
+        <p style="color:var(--muted);font-size:16px;line-height:1.8;margin:20px 0 28px">We tailor every engagement to your operating environment — pairing senior oversight with hands-on execution so outcomes are measurable and enduring.</p>
+        <div class="th-actions"><a class="btn btn--dark" href="{% url 'contact_us' %}">Discuss your project <i class="fa fa-arrow-right"></i></a><a class="btn btn--outline" href="{% url 'company' %}">About Tareon</a></div>
       </div>
       <div>{% if services.image %}<img src="{{ services.image.url }}" alt="{{ services.name }}">{% else %}<img src="{% static 'images/slides/service.jpg' %}" alt="{{ services.name }}">{% endif %}</div>
     </div>
 
     <div class="reveal" style="margin-top:80px">
-      <p class="t-eyebrow">How it works</p>
-      <h2 class="t-h-lg">A process you can <em>trust.</em></h2>
+      <p class="eyebrow">How it works</p>
+      <h2>A process you can <em class="emph">trust.</em></h2>
       <div class="t-process-grid">
         {% for process in service_processes %}
         <div class="t-process-card"><div class="t-step">0{{ forloop.counter }}</div><h3>{{ process.name }}</h3><p>{{ process.description }}</p></div>
@@ -35,12 +35,6 @@
         <div class="t-process-card"><div class="t-step">03</div><h3>Deliver</h3><p>Disciplined execution with accountability for performance, safety and the outcome you asked for.</p></div>
         {% endfor %}
       </div>
-    </div>
-
-    <div class="reveal" style="margin-top:80px">
-      <p class="t-eyebrow">Related work</p>
-      <h2 class="t-h-lg">See it in <em>action.</em></h2>
-      <div class="t-cta" style="margin-top:40px;border-radius:14px"><div class="container" style="padding:0 40px"><p>Explore the projects and outcomes this capability has delivered across our industries.</p><a class="t-btn t-btn-light" href="{% url 'contact_us' %}">Talk to our team <i class="fa fa-arrow-up-right-from-square"></i></a></div></div>
     </div>
   </div>
 </section>

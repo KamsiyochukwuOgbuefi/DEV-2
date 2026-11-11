@@ -4,7 +4,7 @@
 <section class="page-hero">
   <div class="container reveal">
     <div class="eyebrow">Get in touch</div>
-    <h1>Let's build something <em>remarkable.</em></h1>
+    <h1>Let's build something <em class="emph">remarkable.</em></h1>
     <p>Share your questions, comments or project brief — our team will respond within one business day.</p>
   </div>
   <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>Contact</span></div></div>
@@ -27,9 +27,9 @@
             <div class="col-md-6 t-field"><label for="{{ form.job_title.id_for_label }}">Job title</label>{{ form.job_title }}</div>
             <div class="col-md-6 t-field"><label for="{{ form.service.id_for_label }}">Service of interest</label>{{ form.service }}</div>
             <div class="col-md-6 t-field"><label for="{{ form.channel.id_for_label }}">Preferred contact</label>{{ form.channel }}</div>
-            <div class="col-md-12 t-field"><label for="{{ form.message.id_for_label }}">Message</label>{{ form.message }}<small style="color:#8aa3b1">Please share 80–300 characters about your need.</small></div>
+            <div class="col-md-12 t-field"><label for="{{ form.message.id_for_label }}">Message</label>{{ form.message }}<small style="color:var(--muted-soft)">Please share 80–300 characters about your need.</small></div>
           </div>
-          <button type="submit" class="t-btn t-btn-dark" style="width:100%;justify-content:center">Send message <i class="fa fa-paper-plane"></i></button>
+          <button type="submit" class="btn btn--dark btn--full">Send message <i class="fa fa-paper-plane"></i></button>
         </form>
       </div>
       <div class="t-info-card">

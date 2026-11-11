@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* ---- scroll reveal ---- */
+  /* ---- scroll reveal (Resend-style) ---- */
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.paddingTop = '0px';
       }
     }
-    /* scroll-to-top visibility */
+    /* scroll-to-top visibility (Orisa style) */
     var topBtn = document.querySelector('.scrollup');
     if (topBtn) {
       if (y > 400) { topBtn.classList.add('visible'); }
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---- mobile menu toggle ---- */
+  /* ---- mobile menu toggle (Orisa style) ---- */
   var toggle = document.querySelector('.navbar-toggle');
   var collapse = document.querySelector('.navbar-collapse');
   if (toggle && collapse) {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     el.textContent = el.getAttribute('data-count');
   });
 
-  /* ---- testimonial slider ---- */
+  /* ---- testimonial slider (Auregon style) ---- */
   var slides = document.querySelectorAll('.th-testimonial-slide');
   var idx = 0, prev = document.getElementById('tPrev'), next = document.getElementById('tNext');
   if (slides.length) {
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(function () { show(idx + 1); }, 6000);
   }
 
-  /* ---- hero parallax ---- */
+  /* ---- hero parallax (subtle motion) ---- */
   var heroImg = document.querySelector('.th-hero__image');
   if (heroImg) {
     window.addEventListener('scroll', function () {

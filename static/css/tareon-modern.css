@@ -3,8 +3,11 @@
    Design Direction: Resend (minimalism + typography) +
                       Orisa Dark (sophisticated dark aesthetic) +
                       Auregon (modern tech-inspired motion)
-   Brand Colours Preserved: Ink Navy #071b33, Brand Teal #0a6c86,
-                            Teal #0fae9d, Gold #f4b942
+   Brand Colours (PRESERVED):
+     Ink Navy   #071b33
+     Brand Teal #0a6c86
+     Teal       #0fae9d
+     Gold       #f4b942
    ========================================================================== */
 
 :root {
@@ -12,13 +15,13 @@
   --ink: #071b33;
   --ink-soft: #0e2a4a;
   --navy: #09223a;
-  --navy-soft: #103050;
+  --navy-soft: #12324f;
   --brand: #0a6c86;
   --brand-dark: #084f62;
-  --brand-glow: rgba(10, 108, 134, 0.18);
+  --brand-glow: rgba(10, 108, 134, 0.14);
   --teal: #0fae9d;
   --teal-bright: #14b8a6;
-  --teal-glow: rgba(15, 174, 157, 0.16);
+  --teal-glow: rgba(15, 174, 157, 0.14);
   --gold: #f4b942;
   --gold-soft: #e9b33f;
   --gold-glow: rgba(244, 185, 66, 0.14);
@@ -31,7 +34,7 @@
   --muted: #537083;
   --muted-soft: #8aa3b1;
   --line: #dce5ea;
-  --line-soft: #eef3f6;
+  --line-soft: #f0f4f7;
   --text-on-dark: #e8f3f8;
   --text-on-dark-soft: #a9c2d0;
 
@@ -42,8 +45,8 @@
   --shadow-glow: 0 0 60px rgba(10, 108, 134, 0.10);
   --radius: 16px;
   --radius-sm: 10px;
-  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --transition-fast: all 0.2s ease;
+  --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: all 0.25s ease;
   --max-width: 1200px;
 }
 
@@ -54,11 +57,14 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 120px;
+  scroll-padding-top: 100px;
+  font-size: 16px;
 }
 
 body {
@@ -66,7 +72,7 @@ body {
   color: var(--ink-text);
   font-family: 'Manrope', 'Open Sans', system-ui, -apple-system, sans-serif;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.75;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -135,20 +141,15 @@ img {
   padding: 0 28px;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -16px;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: none;
+.row > * {
+  padding: 0 16px;
 }
-
-.reveal--delay-1 { transition-delay: 0.1s; }
-.reveal--delay-2 { transition-delay: 0.2s; }
-.reveal--delay-3 { transition-delay: 0.3s; }
 
 /* ==========================================================================
    Typography helpers
@@ -160,9 +161,9 @@ img {
   color: var(--teal);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.5rem;
   position: relative;
 }
 
@@ -186,7 +187,7 @@ img {
 
 .lead {
   color: var(--muted);
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1.8;
   max-width: 680px;
   margin: 0 auto 1.5rem;
@@ -194,7 +195,6 @@ img {
 
 .text-center { text-align: center; }
 
-/* Emphasis serif accents (Resend-style) */
 em.emph {
   font-family: Georgia, serif;
   font-style: italic;
@@ -203,7 +203,7 @@ em.emph {
 }
 
 /* ==========================================================================
-   Buttons
+   Buttons (Resend-style clean + Orisa hover effects)
    ========================================================================== */
 .btn {
   display: inline-flex;
@@ -354,7 +354,7 @@ em.emph {
   color: #c9dce5;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 8px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -646,14 +646,14 @@ em.emph {
 }
 
 /* ==========================================================================
-   Hero Section (Resend minimalism + Auregon tech-inspired)
+   Hero Section (Resend minimalism + Auregon tech-inspired + Orisa dark)
    ========================================================================== */
 .th-hero {
   position: relative;
   background: var(--ink);
   color: #ffffff;
   overflow: hidden;
-  padding: 110px 0 100px;
+  padding: 120px 0 100px;
   min-height: 85vh;
   display: flex;
   align-items: center;
@@ -701,7 +701,7 @@ em.emph {
   color: #72e3d5;
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   margin: 0 0 1.5rem;
   position: relative;
@@ -1080,7 +1080,7 @@ em.emph {
   margin: 0;
 }
 
-/* Steps / Approach */
+/* Steps / Approach (Orisa style) */
 .th-approach {
   background: var(--surface-elevated);
 }
@@ -2146,6 +2146,36 @@ em.emph {
   margin: 0;
 }
 
+/* Badge float (about page) */
+.t-badge-float {
+  background: var(--ink);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  position: absolute;
+  left: -22px;
+  bottom: 30px;
+  box-shadow: var(--shadow-lg);
+}
+
+.t-badge-float b {
+  display: block;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.t-badge-float b i {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.t-badge-float span {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9db9c9;
+}
+
 /* ==========================================================================
    Footer
    ========================================================================== */
@@ -2328,60 +2358,9 @@ em.emph {
   }
 }
 
-/* Badge float (about page) */
-.t-badge-float {
-  background: var(--ink);
-  color: #ffffff;
-  border-radius: var(--radius-sm);
-  padding: 20px 24px;
-  position: absolute;
-  left: -22px;
-  bottom: 30px;
-  box-shadow: var(--shadow-lg);
-}
-
-.t-badge-float b {
-  display: block;
-  font-size: 32px;
-  line-height: 1;
-}
-
-.t-badge-float b i {
-  color: var(--gold);
-  font-style: normal;
-}
-
-.t-badge-float span {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #9db9c9;
-}
-
 /* ==========================================================================
-   Backward-compatible aliases for legacy template classes
-   (kept so existing templates render with the new design system)
+   Reveal animation keyframes
    ========================================================================== */
-.t-btn { @apply-none: inline-flex align-items center gap 11px border 1px solid transparent border-radius 3px font-size 12px font-weight 800 letter-spacing 0.05em padding 16px 24px text-transform uppercase transition 0.3s cursor pointer; }
-.t-btn { display: inline-flex; align-items: center; gap: 11px; border: 1px solid transparent; border-radius: 3px; font-size: 12px; font-weight: 800; letter-spacing: 0.05em; padding: 16px 24px; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
-.t-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(7,27,51,.22); }
-.t-btn-gold { background: var(--gold); color: var(--ink); }
-.t-btn-gold:hover { background: #ffc96b; color: var(--ink); transform: translateY(-3px); }
-.t-btn-dark { background: var(--ink); color: #ffffff; }
-.t-btn-dark:hover { background: var(--brand); color: #ffffff; transform: translateY(-3px); }
-.t-btn-light { background: #ffffff; color: var(--ink); border-color: var(--line); }
-.t-btn-light:hover { background: var(--gold); color: var(--ink); transform: translateY(-3px); }
-.t-btn-ghost { border: 1px solid rgba(255,255,255,.4); color: #ffffff; background: transparent; }
-.t-btn-ghost:hover { background: #ffffff; color: var(--ink); transform: translateY(-3px); }
-.t-btn-outline { border-color: var(--ink); color: var(--ink); background: transparent; }
-.t-btn-outline:hover { background: var(--ink); color: #ffffff; transform: translateY(-3px); }
-
-.t-link { border-bottom: 1px solid var(--teal); color: var(--navy); display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; padding-bottom: 7px; text-transform: uppercase; }
-.t-link i { color: var(--teal); margin-left: 9px; }
-.t-link:hover { color: var(--teal); border-bottom-color: var(--gold); }
-
-.section-label { color: var(--brand); font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
-.resource-section { padding: 90px 0; }
 @keyframes ticker {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -2393,10 +2372,97 @@ em.emph {
 }
 
 .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.reveal {
   animation: tareonRise 0.8s ease both;
 }
 .reveal.visible {
   animation: none;
+}
+
+.reveal--delay-1 { transition-delay: 0.1s; }
+.reveal--delay-2 { transition-delay: 0.2s; }
+.reveal--delay-3 { transition-delay: 0.3s; }
+
+/* ==========================================================================
+   Backward-compatible aliases for legacy template classes
+   ========================================================================== */
+.t-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.t-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(7,27,51,.22);
+}
+
+.t-btn-gold { background: var(--gold); color: var(--ink); }
+.t-btn-gold:hover { background: #ffc96b; color: var(--ink); transform: translateY(-3px); }
+
+.t-btn-dark { background: var(--ink); color: #ffffff; }
+.t-btn-dark:hover { background: var(--brand); color: #ffffff; transform: translateY(-3px); }
+
+.t-btn-light { background: #ffffff; color: var(--ink); border-color: var(--line); }
+.t-btn-light:hover { background: var(--gold); color: var(--ink); transform: translateY(-3px); }
+
+.t-btn-ghost { border: 1px solid rgba(255,255,255,.4); color: #ffffff; background: transparent; }
+.t-btn-ghost:hover { background: #ffffff; color: var(--ink); transform: translateY(-3px); }
+
+.t-btn-outline { border-color: var(--ink); color: var(--ink); background: transparent; }
+.t-btn-outline:hover { background: var(--ink); color: #ffffff; transform: translateY(-3px); }
+
+.t-link {
+  border-bottom: 1px solid var(--teal);
+  color: var(--navy);
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding-bottom: 7px;
+  text-transform: uppercase;
+}
+
+.t-link i {
+  color: var(--teal);
+  margin-left: 9px;
+}
+
+.t-link:hover {
+  color: var(--teal);
+  border-bottom-color: var(--gold);
+}
+
+.section-label {
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.resource-section {
+  padding: 90px 0;
 }
 
 /* ==========================================================================
@@ -2519,7 +2585,7 @@ em.emph {
   }
 }
 
-/* Dark header variant (for dark section headers) */
+/* Dark header variant */
 .tareon-header.dark {
   background: rgba(7, 27, 51, 0.95);
   border-bottom-color: rgba(255, 255, 255, 0.08);
@@ -2539,7 +2605,6 @@ em.emph {
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Utility classes */
 .w-100 { width: 100%; }
 .d-flex { display: flex; }
 .flex-wrap { flex-wrap: wrap; }

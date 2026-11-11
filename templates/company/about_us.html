@@ -4,7 +4,7 @@
 <section class="page-hero">
   <div class="container reveal">
     <div class="eyebrow">Who we are</div>
-    <h1>We are Tareon — <em>partners in progress.</em></h1>
+    <h1>We are Tareon — <em class="emph">partners in progress.</em></h1>
     <p>Empowering businesses through technology, engineering &amp; procurement excellence.</p>
   </div>
   <div class="breadcrumb"><div class="container"><a href="{% url 'home' %}">Home</a><i class="fa fa-chevron-right"></i><span>About Us</span></div></div>
@@ -14,13 +14,13 @@
   <div class="container">
     <div class="t-about-grid reveal">
       <div>
-        <p class="t-eyebrow">Business Overview</p>
-        <h2 class="t-h-lg">A trusted partner for <em>critical operations.</em></h2>
-        <p class="t-lead">{{ company_overview.business_overview|default:"Tareon Services Limited is a forward-thinking, multi-sector solutions company redefining excellence across Technology, Engineering, and Procurement." }}</p>
-        <p style="color:#536d81;font-size:16px;line-height:1.8;margin:20px 0 28px">{{ company_overview.goals|default:"We empower organisations to achieve digital transformation, operational efficiency and sustainable growth — transforming complex challenges into measurable opportunities." }}</p>
-        <a class="t-btn t-btn-dark" href="{% url 'contact_us' %}">Meet the team <i class="fa fa-arrow-right"></i></a>
+        <p class="eyebrow">Business Overview</p>
+        <h2>A trusted partner for <em class="emph">critical operations.</em></h2>
+        <p class="lead">{{ company_overview.business_overview|default:"Tareon Services Limited is a forward-thinking, multi-sector solutions company redefining excellence across Technology, Engineering, and Procurement." }}</p>
+        <p style="color:var(--muted);font-size:16px;line-height:1.8;margin:20px 0 28px">{{ company_overview.goals|default:"We empower organisations to achieve digital transformation, operational efficiency and sustainable growth — transforming complex challenges into measurable opportunities." }}</p>
+        <a class="btn btn--dark" href="{% url 'contact_us' %}">Meet the team <i class="fa fa-arrow-right"></i></a>
       </div>
-      <div class="t-about-img"><img src="{% static 'images/slides/about.jpg' %}" alt="Tareon team at work"><div class="t-badge-float"><b><span data-count="10">0</span><i>+</i></b><span>Years of trusted delivery</span></div></div>
+      <div class="t-about-img"><img src="{% static 'images/slides/about.jpg' %}" alt="Tareon team at work"><div class="t-badge-float"><b><span data-count="10">10</span><i>+</i></b><span>Years of trusted delivery</span></div></div>
     </div>
 
     <div class="t-value-grid reveal">
@@ -38,13 +38,15 @@
   </div>
 </section>
 
-<section class="th-features">
+<section class="th-capabilities section">
   <div class="container reveal">
-    <p class="t-eyebrow" style="color:#73e5d5">What we deliver</p>
-    <h2 class="t-h-lg">Three disciplines. <em>One standard:</em> excellence.</h2>
-    <div class="th-capability-grid" style="margin-top:44px">
+    <div class="th-section-head center">
+      <p class="eyebrow center">What we deliver</p>
+      <h2>Three disciplines. <em class="emph">One standard:</em> excellence.</h2>
+    </div>
+    <div class="th-capability-grid">
       {% for service in services %}
-      <a class="th-capability" href="{{ service.service_url }}" style="background:#fff"><span class="th-capability__number">0{{ forloop.counter }}</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>{{ service.name }}</h3><p>{{ service.description|truncatewords:24 }}</p><span class="th-capability__line"></span></a>
+      <a class="th-capability" href="{{ service.service_url }}"><span class="th-capability__number">0{{ forloop.counter }}</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>{{ service.name }}</h3><p>{{ service.description|truncatewords:24 }}</p><span class="th-capability__line"></span></a>
       {% empty %}
       <a class="th-capability" href="{% url 'contact_us' %}"><span class="th-capability__number">01</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>Technology &amp; IT Services</h3><p>Intelligent systems that sharpen visibility, resilience and decision-making.</p><span class="th-capability__line"></span></a>
       <a class="th-capability" href="{% url 'contact_us' %}"><span class="th-capability__number">02</span><span class="th-capability__arrow"><i class="fa fa-arrow-up-right-from-square"></i></span><h3>Engineering Services</h3><p>Precision-led delivery for dependable assets and operations.</p><span class="th-capability__line"></span></a>
@@ -55,10 +57,10 @@
 </section>
 
 {% if staffs %}
-<section class="t-section" style="padding-bottom:40px"><div class="container reveal"><p class="t-eyebrow center">Meet our people</p><h2 class="t-h-lg" style="text-align:center">Seasoned experts. <em>People first.</em></h2><div class="t-team-grid">{% for employee in staffs %}<div class="t-team-card">{% if employee.image %}<img src="{{ employee.image.url }}" alt="{{ employee.full_name }}">{% endif %}<div class="t-team-info"><h4>{{ employee.full_name }}</h4><p>{{ employee.position }}</p><span>{{ employee.description }}</span></div></div>{% endfor %}</div></div></section>
+<section class="t-section" style="padding-bottom:40px"><div class="container reveal"><p class="eyebrow center">Meet our people</p><h2 style="text-align:center">Seasoned experts. <em class="emph">People first.</em></h2><div class="t-team-grid">{% for employee in staffs %}<div class="t-team-card">{% if employee.image %}<img src="{{ employee.image.url }}" alt="{{ employee.full_name }}">{% endif %}<div class="t-team-info"><h4>{{ employee.full_name }}</h4><p>{{ employee.position }}</p><span>{{ employee.description }}</span></div></div>{% endfor %}</div></div></section>
 {% endif %}
 
-<section class="th-proof"><div class="container reveal"><div class="th-proof__quote"><span class="th-quote-mark">&ldquo;</span>{% if testimonials %}{% for testimonial in testimonials|slice:':1' %}<blockquote>{{ testimonial.content }}</blockquote><p><strong>{{ testimonial.name }}</strong>{% if testimonial.location %} · {{ testimonial.location }}{% endif %}</p>{% endfor %}{% else %}<blockquote>Intelligence, integrity and disciplined execution — working in concert.</blockquote><p><strong>Tareon Services Limited</strong> · Lagos, Nigeria</p>{% endif %}</div></div></section>
+<section class="th-proof section"><div class="container reveal"><div class="th-proof__quote"><span class="th-quote-mark">&ldquo;</span>{% if testimonials %}{% for testimonial in testimonials|slice:':1' %}<blockquote>{{ testimonial.content }}</blockquote><p><strong>{{ testimonial.name }}</strong>{% if testimonial.location %} · {{ testimonial.location }}{% endif %}</p>{% endfor %}{% else %}<blockquote>Intelligence, integrity and disciplined execution — working in concert.</blockquote><p><strong>Tareon Services Limited</strong> · Lagos, Nigeria</p>{% endif %}</div></div></section>
 
 {% include 'includes/footer_cta.html' %}
 {% endblock %}
